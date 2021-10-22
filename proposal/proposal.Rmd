@@ -21,12 +21,13 @@ View(video_game_sales)
 
 ## 1. Introduction
 
-
+Our question is:
+what factor influences the sales of a video game the most
 
 ## 2. Data
-
-
-
+```{r data-glimpse}
+glimpse(video_game_sales)
+```
 ## 3. Data analysis plan
 
 
