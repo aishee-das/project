@@ -33,3 +33,47 @@ glimpse(video_game_sales)
 
 We will look at the different relationships between the sales (global and specific) of a game and different factors in its release and success. All sorts of different plots (e.g. line plot, density plot, bar plot etc.) and data analysis methods (mean, median and mode) will be used to discuss this and visualize this in our different individual ways.
 
+
+### First Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+
+### Second Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+
+### Third Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+
+### Fourth Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
