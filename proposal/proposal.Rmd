@@ -31,5 +31,5 @@ glimpse(video_game_sales)
 
 ## 3. Data analysis plan
 
-
+We will look at the different relationships between the sales (global and specific) of a game and different factors in its release and success. All sorts of different plots (e.g. line plot, density plot, bar plot etc.) and data analysis methods (mean, median and mode) will be used to discuss this and visualize this in our different individual ways.
 
