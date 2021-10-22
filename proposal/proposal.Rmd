@@ -7,6 +7,8 @@ output: github_document
 ```{r load-packages, message = FALSE}
 library(tidyverse)
 library(broom)
+library(dsbox)
+library(ggridges)
 ```
 
 *For instructions on what each section should include, please see the [project page](https://idsed.digital/assessments/project/#proposal) on the course website. Remove this text when completing your proposal*.
