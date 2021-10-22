@@ -9,14 +9,14 @@ library(tidyverse)
 library(broom)
 library(dsbox)
 library(ggridges)
-library(here)
 library(readr)
 ```
 
-#RUN THIS IN CONSOLE FOR DATA:
-#video_game_sales <- #read_csv("proposal/Video_Games_Sales_as_at_22_Dec_2016.csv")
-#View(video_game_sales)
-
+```{r load-data, message = FALSE}
+#Need to run in console
+video_game_sales <- read_csv("proposal/Video_Games_Sales_as_at_22_Dec_2016.csv")
+View(video_game_sales)
+```
 *For instructions on what each section should include, please see the [project page](https://idsed.digital/assessments/project/#proposal) on the course website. Remove this text when completing your proposal*.
 
 ## 1. Introduction
@@ -27,6 +27,46 @@ what factor influences the sales of a video game the most
 ## 2. Data
 ```{r data-glimpse}
 glimpse(video_game_sales)
+```
+### First Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+### Second Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+### Third Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+### Fourth Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
 ```
 ## 3. Data analysis plan
 
