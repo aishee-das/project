@@ -28,6 +28,26 @@ what factor influences the sales of a video game the most
 ```{r data-glimpse}
 glimpse(video_game_sales)
 ```
+
+```{r }
+
+
+```
+
+```{r }
+
+
+```
+
+```{r }
+
+
+```
+
+```{r }
+
+
+```
 ## 3. Data analysis plan
 
 
