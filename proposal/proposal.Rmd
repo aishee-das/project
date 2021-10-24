@@ -10,11 +10,12 @@ library(broom)
 library(dsbox)
 library(ggridges)
 library(readr)
+library(here)
 ```
 
 ```{r load-data, message = FALSE}
-#Need to run in console
-video_game_sales <- read_csv("proposal/Video_Games_Sales_as_at_22_Dec_2016.csv")
+#If not work, need to run in console
+video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
 View(video_game_sales)
 ```
 *For instructions on what each section should include, please see the [project page](https://idsed.digital/assessments/project/#proposal) on the course website. Remove this text when completing your proposal*.
@@ -22,7 +23,11 @@ View(video_game_sales)
 ## 1. Introduction
 
 Our question is:
-what factor influences the sales of a video game the most
+what factor influences the sales of a video game the most. 
+
+Data is collected from https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings 
+
+(This dataset contains a list of video games with sales greater than 100,000 copies.)
 
 ## 2. Data
 ```{r data-glimpse}
@@ -33,6 +38,7 @@ glimpse(video_game_sales)
 
 We will look at the different relationships between the sales (global and specific) of a game and different factors in its release and success. All sorts of different plots (e.g. line plot, density plot, bar plot etc.) and data analysis methods (mean, median and mode) will be used to discuss this and visualize this in our different individual ways.
 
+It will follow the ensuing format:
 
 ### First Data
 
@@ -67,13 +73,8 @@ We will look at the different relationships between the sales (global and specif
 
 ```
 
-### Fourth Data
+### etc...
 
-#### Narrative
+### Comparison of data
 
-#### code
-
-```{r }
-
-
-```
+### Written summary with visual proofs
