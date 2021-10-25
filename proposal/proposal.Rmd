@@ -75,7 +75,7 @@ It will follow the ensuing format:
 
 ### Fourth Data
 
-#### Narrative
+#### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
 
 #### code
 
