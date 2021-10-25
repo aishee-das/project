@@ -42,9 +42,9 @@ It will follow the ensuing format:
 
 ### First Data
 
-#### Narrative
+#### A line graph showing the relationship between genre of game and global sales over the years
 
-#### code
+#### code and plotting. a single line graph with all genres and seperate faceted graphs
 
 ```{r }
 
