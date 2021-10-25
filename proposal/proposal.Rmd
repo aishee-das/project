@@ -53,11 +53,11 @@ It will follow the ensuing format:
 
 ### Second Data
 
-#### Narrative
+#### A facet graph of mean sale for different area against platform(x = platform, y = mean sale) by bar plot or histogram plot
 
 #### code
 
-```{r }
+```{r Mean_sale_vs_platform}
 
 
 ```
@@ -72,6 +72,20 @@ It will follow the ensuing format:
 
 
 ```
+
+### Fourth Data
+
+#### Narrative
+
+#### code
+
+```{r }
+
+
+```
+
+
+
 
 ### etc...
 
