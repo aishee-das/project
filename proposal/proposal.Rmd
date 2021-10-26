@@ -13,11 +13,10 @@ library(readr)
 library(here)
 ```
 
-```{r load-data, message = FALSE}
-#If not work, need to run in console
-video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
-View(video_game_sales)
-```
+###If not work, need to run in console
+#video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
+#View(video_game_sales)
+
 *For instructions on what each section should include, please see the [project page](https://idsed.digital/assessments/project/#proposal) on the course website. Remove this text when completing your proposal*.
 
 ## 1. Introduction
@@ -31,6 +30,7 @@ Data is collected from https://www.kaggle.com/rush4ratio/video-game-sales-with-r
 
 ## 2. Data
 ```{r data-glimpse}
+video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
 glimpse(video_game_sales)
 ```
 
@@ -55,7 +55,7 @@ It will follow the ensuing format:
 
 #### A facet graph of mean sale for different area against platform(x = platform, y = mean sale) by bar plot or histogram plot
 
-#### code
+#### code and plotting.
 
 ```{r Mean_sale_vs_platform}
 
@@ -65,7 +65,8 @@ It will follow the ensuing format:
 ### Third Data
 
 #### A histogram chart presenting the relationship between the pubisher and the mean japan's sales (x = Publisher, y = mean JP_Sales).
-#### code
+
+#### code and plotting
 
 ```{r }
 
@@ -76,7 +77,29 @@ It will follow the ensuing format:
 
 #### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
 
-#### code
+#### code and plotting
+
+```{r }
+
+
+```
+
+### Fifth Data
+
+#### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
+
+#### code and plotting
+
+```{r }
+
+
+```
+
+### Sixth Data
+
+#### A ridge-plot graph comparing the distribution of high selling games (games with over XXX global sales) over the years for different publishers/developers
+
+#### code and plotting
 
 ```{r }
 
@@ -84,10 +107,33 @@ It will follow the ensuing format:
 ```
 
 
+### Seventh data
+
+#### A list of mean global sales per genre, with box plot to show clearly the spread for each genre
+
+#### code and plotting
+
+```{r }
+
+
+```
+
+
+### Eigth data
+
+#### A comparison of global sales for games that were released in america against those that were not (simple 2 varaible bar graph with stacked year of release)
+
+#### code and plotting
+
+```{r }
+
+
+```
 
 
 ### etc...
 
-### Comparison of data
 
-### Written summary with visual proofs
+### Comparison of all different data and analogies
+
+### Written summary of what factor is mostly tied with global sales with visual proofs (plots)
