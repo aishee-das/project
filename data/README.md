@@ -1,5 +1,4 @@
 # data
-
 Data dimensions: 
   Rows: 16719 (number of items) 
   Columns: 16 (number of variables)
@@ -22,3 +21,4 @@ Data dimensions:
 - `User_Count`: Number of users who gave the User_Score
 - `Developer`: Party responsible for creating the game
 - `Rating`: The ESRB ratings (https://www.esrb.org/)
+
