@@ -1,9 +1,8 @@
 # data
 
-Place data file(s) in this folder.
-
-Then, include codebooks (variables, and their descriptions) for your data file(s)
-using the following format.
+Data dimensions: 
+  Rows: 16719 (number of items) 
+  Columns: 16 (number of variables)
 
 ## video_game_sales
 
