@@ -23,3 +23,6 @@ using the following format.
 - `User_Count`: Number of users who gave the User_Score
 - `Developer`: Party responsible for creating the game
 - `Rating`: The ESRB ratings (https://www.esrb.org/)
+
+column number = 16
+row number = 16719
