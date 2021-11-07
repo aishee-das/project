@@ -15,9 +15,6 @@ library(here)
 read\_csv(here::here(“data/Video\_Games\_Sales\_as\_at\_22\_Dec\_2016.csv”))
 \#View(video\_game\_sales)
 
-*For instructions on what each section should include, please see the
-[project page](https://idsed.digital/assessments/project/#proposal) on
-the course website. Remove this text when completing your proposal*.
 
 ## 1. Introduction
 

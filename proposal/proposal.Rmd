@@ -13,11 +13,12 @@ library(readr)
 library(here)
 ```
 
-###If not work, need to run in console
-#video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
-#View(video_game_sales)
 
-*For instructions on what each section should include, please see the [project page](https://idsed.digital/assessments/project/#proposal) on the course website. Remove this text when completing your proposal*.
+```{r data}
+video_game_sales <-
+read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
+View(video_game_sales)
+```
 
 ## 1. Introduction
 
@@ -58,8 +59,9 @@ It will follow the ensuing format:
 #### code and plotting.
 
 ```{r Mean_sale_vs_platform}
-
-
+video_game_sales %>%
+  group_by(Platform) %>%
+  summarise(mean_Global_sales = mean(Global_Sales))
 ```
 
 ### Third Data

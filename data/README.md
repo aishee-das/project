@@ -1,9 +1,7 @@
 # data
-
-Place data file(s) in this folder.
-
-Then, include codebooks (variables, and their descriptions) for your data file(s)
-using the following format.
+Data dimensions: 
+  Rows: 16719 (number of items) 
+  Columns: 16 (number of variables)
 
 ## video_game_sales
 
@@ -23,3 +21,4 @@ using the following format.
 - `User_Count`: Number of users who gave the User_Score
 - `Developer`: Party responsible for creating the game
 - `Rating`: The ESRB ratings (https://www.esrb.org/)
+
