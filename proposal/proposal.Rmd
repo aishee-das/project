@@ -64,7 +64,7 @@ It will follow the ensuing format:
 
 ### Third Data
 
-#### A histogram chart presenting the relationship between the pubisher and the mean japan's sales (x = Publisher, y = mean JP_Sales).
+#### A histogram chart presenting the relationship between the pubisher and the mean japan's sales (x = Publisher, y = mean_JP_Sales).
 
 #### code and plotting
 
