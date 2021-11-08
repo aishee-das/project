@@ -11,6 +11,7 @@ library(dsbox)
 library(ggridges)
 library(readr)
 library(here)
+library(scales)
 ```
 
 
@@ -73,12 +74,22 @@ video_game_sales %>%
 
 ### Third Data
 
-#### A histogram chart presenting the relationship between the pubisher and the mean japan's sales (x = Publisher, y = mean JP_Sales).
+#### A point gragh presenting the relationship between the pubisher and the mean japan's sales, which are the  top five ones. (x = Publisher, y = mean_JP_Sales).
 
 #### code and plotting
 
 ```{r }
-
+video_game_sales %>%
+  group_by(Publisher) %>%
+  summarise(mean_JP_Sales = mean(JP_Sales)) %>%
+  arrange(desc(mean_JP_Sales)) %>%
+  slice(1:5) %>%
+  ggplot(aes(x = Publisher, y = mean_JP_Sales)) +
+  geom_point() +
+  labs(title = "The five most popular Publishers in Japan",
+       x = "Publisher", y = "mean_JP_Sales"
+       ) +
+  theme_minimal() 
 
 ```
 
@@ -111,7 +122,8 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
-
+video_game_sales %>%
+  
 
 ```
 
