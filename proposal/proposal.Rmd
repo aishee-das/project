@@ -48,8 +48,15 @@ It will follow the ensuing format:
 #### code and plotting. a single line graph with all genres and seperate faceted graphs
 
 ```{r }
+genre_sales_years <- video_game_sales%>%
+  group_by(Year_of_Release, Genre)%>%
+  summarise(Year_of_Release, Genre, Global_Sales = sum(Global_Sales))%>%
+  distinct()
 
-
+genre_sales_years%>%
+  ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
+  theme(axis.text.x = element_text(angle = 45, size = 6)) +
+  geom_line()
 ```
 
 ### Second Data
