@@ -42,11 +42,8 @@ We will look at the different relationships between the sales (global and specif
 
 It will follow the ensuing format:
 
-### First Data
-
-#### A line graph showing the relationship between genre of game and TOTAL global sales over the years
-
-#### code and plotting. a single line graph with top 5 genres and seperate faceted graphs
+To be implemented as a function/script 
+[top_n(category_1, category2, number) -> {data frame of top `number` variables in the `category_1` category with the `category_2` category values}
 
 ```{r top-of-category}
 top_genre <- video_game_sales%>%
@@ -63,6 +60,12 @@ top_platform <- video_game_sales%>%
   
 top_platform_list <<- top_platform$Platform
 ```
+
+### First Data
+
+#### A line graph showing the relationship between genre of game and TOTAL global sales over the years
+
+#### code and plotting. a single line graph with top 5 genres and seperate faceted graphs
 
 ```{r }
 genre_sales_yrs <- video_game_sales%>%
