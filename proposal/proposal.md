@@ -9,12 +9,23 @@ library(dsbox)
 library(ggridges)
 library(readr)
 library(here)
+library(scales)
 ```
 
-\#\#\#If not work, need to run in console \#video\_game\_sales &lt;-
-read\_csv(here::here(“data/Video\_Games\_Sales\_as\_at\_22\_Dec\_2016.csv”))
-\#View(video\_game\_sales)
+``` r
+video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
+```
 
+    ## Rows: 16719 Columns: 16
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (8): Name, Platform, Year_of_Release, Genre, Publisher, User_Score, Deve...
+    ## dbl (8): NA_Sales, EU_Sales, JP_Sales, Other_Sales, Global_Sales, Critic_Sco...
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ## 1. Introduction
 
@@ -78,41 +89,130 @@ ways.
 
 It will follow the ensuing format:
 
+To be implemented as a function/script \[top\_n(category\_1, category2,
+number) -&gt; {data frame of top `number` variables in the `category_1`
+category with the `category_2` category values}
+
+``` r
+top_genre <- video_game_sales%>%
+  group_by(Genre)%>%
+  summarise(global = sum(Global_Sales))%>%
+  slice_max(global, n = 5)
+  
+top_genre_list <<- top_genre$Genre
+
+top_platform <- video_game_sales%>%
+  group_by(Platform)%>%
+  summarise(global = sum(Global_Sales))%>%
+  slice_max(global, n = 10)
+  
+top_platform_list <<- top_platform$Platform
+```
+
 ### First Data
 
-#### A line graph showing the relationship between genre of game and global sales over the years
+#### A line graph showing the relationship between genre of game and TOTAL global sales over the years
 
-#### code and plotting. a single line graph with all genres and seperate faceted graphs
+#### code and plotting. a single line graph with top 5 genres and seperate faceted graphs
+
+``` r
+genre_sales_yrs <- video_game_sales%>%
+  group_by(Year_of_Release, Genre)%>%
+  filter(!Year_of_Release == "N/A") %>%
+  filter(!is.na(Genre)) %>%
+  summarise(Year_of_Release, Genre, Global_Sales = sum(Global_Sales))%>%
+  group_by(Genre)%>%
+  filter(Genre %in% top_genre_list) %>%
+  distinct()
+```
+
+    ## `summarise()` has grouped output by 'Year_of_Release', 'Genre'. You can override using the `.groups` argument.
+
+``` r
+genre_sales_yrs%>%
+  ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
+  theme(axis.text.x = element_text(angle = 45, size = 6)) +
+  geom_line()
+```
+
+![](proposal_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ### Second Data
 
-#### A facet graph of mean sale for different area against platform(x = platform, y = mean sale) by bar plot or histogram plot
+#### A facet graph of mean sale for different area against (top 10) platform(x = platform, y = mean sale) by bar plot or histogram plot
 
-#### code
+#### Possibly change to bars for clarity
+
+#### code and plotting.
+
+``` r
+video_game_sales %>%
+  group_by(Platform) %>%
+  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_Global = mean(Global_Sales))%>%
+  group_by(Platform)%>%
+  filter(Platform %in% top_platform_list) %>%
+  
+  ggplot(aes(x=Platform))+
+  geom_point(aes(y=mean_Global, colour = "Global"))+
+  geom_point(aes(y=mean_NA, colour = "North America"))+
+  geom_point(aes(y=mean_JP, colour = "Japan"))+
+  geom_point(aes(y=mean_EU, colour = "Europe"))+
+  geom_point(aes(y=mean_Other, colour = "Other"))
+```
+
+![](proposal_files/figure-gfm/Mean_sale_vs_platform-1.png)<!-- -->
 
 ### Third Data
 
-#### A histogram chart presenting the relationship between the pubisher and the mean japan’s sales (x = Publisher, y = mean JP\_Sales).
+#### A point gragh presenting the relationship between the pubisher and the mean japan’s sales, which are the top five ones. (x = Publisher, y = mean\_JP\_Sales).
 
-#### code
+#### code and plotting
+
+``` r
+video_game_sales %>%
+  group_by(Publisher) %>%
+  summarise(mean_JP_Sales = mean(JP_Sales)) %>%
+  arrange(desc(mean_JP_Sales)) %>%
+  slice(1:5) %>%
+  ggplot(aes(x = Publisher, y = mean_JP_Sales)) +
+  geom_point() +
+  labs(title = "The five most popular Publishers in Japan",
+       x = "Publisher", y = "mean_JP_Sales"
+       ) +
+  theme_minimal() 
+```
+
+![](proposal_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ### Fourth Data
 
 #### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
 
-#### code
+#### code and plotting
 
 ### Fifth Data
 
 #### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
 
-#### code
+#### code and plotting
 
 ### Sixth Data
 
 #### A ridge-plot graph comparing the distribution of high selling games (games with over XXX global sales) over the years for different publishers/developers
 
-#### code
+#### code and plotting
+
+### Seventh data
+
+#### A list of mean global sales per genre, with box plot to show clearly the spread for each genre
+
+#### code and plotting
+
+### Eigth data
+
+#### A comparison of global sales for games that were released in america against those that were not (simple 2 varaible bar graph with stacked year of release)
+
+#### code and plotting
 
 ### etc…
 

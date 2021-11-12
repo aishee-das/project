@@ -16,9 +16,7 @@ library(scales)
 
 
 ```{r data}
-video_game_sales <-
-read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
-View(video_game_sales)
+video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
 ```
 
 ## 1. Introduction
@@ -86,6 +84,7 @@ genre_sales_yrs%>%
 ### Second Data
 
 #### A facet graph of mean sale for different area against (top 10) platform(x = platform, y = mean sale) by bar plot or histogram plot
+#### Possibly change to bars for clarity
 
 #### code and plotting.
 
@@ -154,8 +153,6 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
-video_game_sales %>%
-  
 
 ```
 
