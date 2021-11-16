@@ -9,6 +9,7 @@ library(tidyverse)
 library(broom)
 library(dsbox)
 library(ggridges)
+library(ggplot2)
 library(readr)
 library(here)
 library(scales)
@@ -34,9 +35,13 @@ video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_201
 glimpse(video_game_sales)
 ```
 
-## 3. Data analysis plan
+## 3. Data analysis plan 
 
 We will look at the different relationships between the sales (global and specific) of a game and different factors in its release and success. All sorts of different plots (e.g. line plot, density plot, bar plot etc.) and data analysis methods (mean, median and mode) will be used to discuss this and visualize this in our different individual ways.
+
+IN GENERAL, WE ARE ANSWERING THE QUESTION:
+
+"WHAT FACTOR HAS THE BIGGEST INFLUENCE OF SALES ON VIDEO GAMES?"
 
 It will follow the ensuing format:
 
@@ -63,7 +68,9 @@ top_platform_list <<- top_platform$Platform
 
 #### A line graph showing the relationship between genre of game and TOTAL global sales over the years
 
-#### code and plotting. a single line graph with top 5 genres and seperate faceted graphs
+This plot will clearly show the best genre (in terms of global sales) over the years. From this we can determine how much genre influences the sales over time and classify any trends for particular time periods.
+
+#### code and plotting: a single line graph with top 5 genres and faceted graphs
 
 ```{r }
 genre_sales_yrs <- video_game_sales%>%
@@ -80,10 +87,14 @@ genre_sales_yrs%>%
   theme(axis.text.x = element_text(angle = 45, size = 6)) +
   geom_line()
 ```
+This plot clearly shows that, from the top 5 best selling genres of the data, sports and action games have the biggest peaks (approximately 135 million global sales). But we can also see that these genres have not always been the best selling: while they have not had the best selling in the past 15 years, platform games have consistently achieved a large amount of global sales (for the entirety of the period between 1984 and 1995, it was by far the best selling genre). Yet in the most recent years, games of the platforming genre have certainly been dropping off in sales.
 
 ### Second Data
 
 #### A facet graph of mean sale for different area against (top 10) platform(x = platform, y = mean sale) by bar plot or histogram plot
+
+This plot will show us, not only the most successful platform (the platform with the highest mean global sales) but also where these sales come from: the splitting of the mean sales to region will show where particular platforms perform especially well and where they do not. This will allow us to determine how much platforms in certain regions will influence the global sales of a game.
+
 #### Possibly change to bars for clarity
 
 #### code and plotting.
@@ -91,17 +102,21 @@ genre_sales_yrs%>%
 ```{r Mean_sale_vs_platform}
 video_game_sales %>%
   group_by(Platform) %>%
-  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_Global = mean(Global_Sales))%>%
+  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
   group_by(Platform)%>%
   filter(Platform %in% top_platform_list) %>%
   
   ggplot(aes(x=Platform))+
-  geom_point(aes(y=mean_Global, colour = "Global"))+
+  theme(axis.text.x = element_text(angle = 45, size = 6)) +
+  geom_point(aes(y=mean_sales, colour = "Global"))+
   geom_point(aes(y=mean_NA, colour = "North America"))+
   geom_point(aes(y=mean_JP, colour = "Japan"))+
   geom_point(aes(y=mean_EU, colour = "Europe"))+
   geom_point(aes(y=mean_Other, colour = "Other"))
+  #+ ggplot(aes(x=Platform, y=mean_sales, group = 1))+
+  # geom_bar(stat="identity")
 ```
+From the plot, we can see that, overall, north america contributes the most to the global sales of video games across most platforms; excluding the PS4 and PC (for which the highest mean sales is Europe), North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and 'Other' regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.
 
 ### Third Data
 

@@ -87,6 +87,10 @@ plot etc.) and data analysis methods (mean, median and mode) will be
 used to discuss this and visualize this in our different individual
 ways.
 
+IN GENERAL, WE ARE ANSWERING THE QUESTION:
+
+“WHAT FACTOR HAS THE BIGGEST INFLUENCE OF SALES ON VIDEO GAMES?”
+
 It will follow the ensuing format:
 
 To be implemented as a function/script \[top\_n(category\_1, category2,
@@ -135,7 +139,13 @@ genre_sales_yrs%>%
   geom_line()
 ```
 
-![](proposal_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](proposal_files/figure-gfm/unnamed-chunk-1-1.png)<!-- --> This plot
+clearly shows that, from the top 5 best selling genres of the data,
+sports and action games have the biggest peaks (approximately 135
+million global sales). But we can also see that these genres have not
+always been the best selling: while they have not had the best selling
+in the past 15 years, platform games have consistently achieved a large
+amount of global sales ()
 
 ### Second Data
 
