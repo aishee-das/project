@@ -13,6 +13,7 @@ library(ggplot2)
 library(readr)
 library(here)
 library(scales)
+library(dplyr)
 ```
 
 
@@ -146,7 +147,16 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
+sample_data <- video_game_sales %>%
+ sample_n(500)
 
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales)) +
+  geom_jitter()+
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() 
 
 ```
 
