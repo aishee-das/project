@@ -169,7 +169,8 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
-
+hight_selling_games <- video_game_sales %>%
+  filter(25 < Global_Sales)
 ```
 
 
