@@ -13,6 +13,7 @@ library(ggplot2)
 library(readr)
 library(here)
 library(scales)
+library(dplyr)
 ```
 
 
@@ -105,7 +106,18 @@ mean_df <- video_game_sales %>%
   summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
   group_by(Platform)%>%
   filter(Platform %in% top_platform_list)
+```
 
+```{r pivot_longer_mean_df}
+mean_df_long <- mean_df%>%
+  pivot_longer(
+    cols = -Platform,
+    names_to = "Region",
+    values_to = "mean value"
+  )
+```
+
+```{r mean_df_plot}
 mean_df %>%
   ggplot(aes(x=Platform))+
   theme(axis.text.x = element_text(angle = 45, size = 6)) +
@@ -147,7 +159,16 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
+sample_data <- video_game_sales %>%
+ sample_n(500)
 
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales)) +
+  geom_jitter()+
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() 
 
 ```
 
