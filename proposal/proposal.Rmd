@@ -185,7 +185,7 @@ sample_data %>%
 
 ### Sixth Data
 
-#### A bargraph of Publishers of the high selling games(top 50) across the world.
+#### A bar plot of Publishers of the high selling games(top 50) across the world.
 
 #### code and plotting
 
