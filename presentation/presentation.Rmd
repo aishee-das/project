@@ -1,7 +1,7 @@
 ---
-title: "Presentation title"
-subtitle: <font size='6'>Presentation subtitle (if any)</font>
-author: <font size='8'>Team name <br> Names of team members</font>
+title: "The factors affecting sales of video games"
+subtitle: <font size='6'>From 1980 to 2020</font>
+author: <font size='8'>Disco <br> Names of team members</font>
 institute: <font size='10'>University of Edinburgh</font>
 date: <font size = '6'>`r Sys.Date()`</font>
 output:

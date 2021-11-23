@@ -13,6 +13,7 @@ library(ggplot2)
 library(readr)
 library(here)
 library(scales)
+library(dplyr)
 ```
 
 
@@ -100,12 +101,24 @@ This plot will show us, not only the most successful platform (the platform with
 #### code and plotting.
 
 ```{r Mean_sale_vs_platform}
-video_game_sales %>%
+mean_df <- video_game_sales %>%
   group_by(Platform) %>%
   summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
   group_by(Platform)%>%
-  filter(Platform %in% top_platform_list) %>%
-  
+  filter(Platform %in% top_platform_list)
+```
+
+```{r pivot_longer_mean_df}
+mean_df_long <- mean_df%>%
+  pivot_longer(
+    cols = -Platform,
+    names_to = "Region",
+    values_to = "mean value"
+  )
+```
+
+```{r mean_df_plot}
+mean_df %>%
   ggplot(aes(x=Platform))+
   theme(axis.text.x = element_text(angle = 45, size = 6)) +
   geom_point(aes(y=mean_sales, colour = "Global"))+
@@ -146,7 +159,16 @@ video_game_sales %>%
 #### code and plotting
 
 ```{r }
+sample_data <- video_game_sales %>%
+ sample_n(500)
 
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales)) +
+  geom_jitter()+
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() 
 
 ```
 
@@ -163,14 +185,21 @@ video_game_sales %>%
 
 ### Sixth Data
 
-#### A ridge-plot graph comparing the distribution of high selling games (games with over XXX global sales) over the years for different publishers/developers
+#### A bar plot of Publishers of the high selling games(top 50) across the world.
 
 #### code and plotting
 
 ```{r }
-
+high_selling_games <- video_game_sales %>%
+  filter(11.3 < Global_Sales)
+high_selling_games %>%
+  group_by(Publisher) %>%
+  ggplot(aes(x = Publisher)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 10, size = 6)) +
+  labs(title = "Publisher of top 50 high saleing games", subtitle = "and the amount of game released")
 ```
-
+We can see that Nintendo have the most game in top 50 high selling games, its about 30+ and in total there is 5 publisher having game in the top 50. Where other publisher are all having games less than 10.
 
 ### Seventh data
 
