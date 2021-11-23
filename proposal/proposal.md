@@ -7,9 +7,11 @@ library(tidyverse)
 library(broom)
 library(dsbox)
 library(ggridges)
+library(ggplot2)
 library(readr)
 library(here)
 library(scales)
+library(dplyr)
 ```
 
 ``` r
@@ -93,8 +95,8 @@ IN GENERAL, WE ARE ANSWERING THE QUESTION:
 
 It will follow the ensuing format:
 
-To be implemented as a function/script \[top\_n(category\_1, category2,
-number) -&gt; {data frame of top `number` variables in the `category_1`
+To be implemented as a function/script \[top_n(category_1, category2,
+number) -> {data frame of top `number` variables in the `category_1`
 category with the `category_2` category values}
 
 ``` r
@@ -117,7 +119,11 @@ top_platform_list <<- top_platform$Platform
 
 #### A line graph showing the relationship between genre of game and TOTAL global sales over the years
 
-#### code and plotting. a single line graph with top 5 genres and seperate faceted graphs
+This plot will clearly show the best genre (in terms of global sales)
+over the years. From this we can determine how much genre influences the
+sales over time and classify any trends for particular time periods.
+
+#### code and plotting: a single line graph with top 5 genres and faceted graphs
 
 ``` r
 genre_sales_yrs <- video_game_sales%>%
@@ -145,36 +151,76 @@ sports and action games have the biggest peaks (approximately 135
 million global sales). But we can also see that these genres have not
 always been the best selling: while they have not had the best selling
 in the past 15 years, platform games have consistently achieved a large
-amount of global sales ()
+amount of global sales (for the entirety of the period between 1984 and
+1995, it was by far the best selling genre). Yet in the most recent
+years, games of the platforming genre have certainly been dropping off
+in sales.
 
 ### Second Data
 
 #### A facet graph of mean sale for different area against (top 10) platform(x = platform, y = mean sale) by bar plot or histogram plot
+
+This plot will show us, not only the most successful platform (the
+platform with the highest mean global sales) but also where these sales
+come from: the splitting of the mean sales to region will show where
+particular platforms perform especially well and where they do not. This
+will allow us to determine how much platforms in certain regions will
+influence the global sales of a game.
 
 #### Possibly change to bars for clarity
 
 #### code and plotting.
 
 ``` r
-video_game_sales %>%
+mean_df <- video_game_sales %>%
   group_by(Platform) %>%
-  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_Global = mean(Global_Sales))%>%
+  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
   group_by(Platform)%>%
-  filter(Platform %in% top_platform_list) %>%
-  
+  filter(Platform %in% top_platform_list)
+```
+
+``` r
+mean_df_long <- mean_df%>%
+  pivot_longer(
+    cols = -Platform,
+    names_to = "Region",
+    values_to = "mean value"
+  )
+```
+
+``` r
+mean_df %>%
   ggplot(aes(x=Platform))+
-  geom_point(aes(y=mean_Global, colour = "Global"))+
+  theme(axis.text.x = element_text(angle = 45, size = 6)) +
+  geom_point(aes(y=mean_sales, colour = "Global"))+
   geom_point(aes(y=mean_NA, colour = "North America"))+
   geom_point(aes(y=mean_JP, colour = "Japan"))+
   geom_point(aes(y=mean_EU, colour = "Europe"))+
   geom_point(aes(y=mean_Other, colour = "Other"))
 ```
 
-![](proposal_files/figure-gfm/Mean_sale_vs_platform-1.png)<!-- -->
+![](proposal_files/figure-gfm/mean_df_plot-1.png)<!-- -->
+
+``` r
+  #+ ggplot(aes(x=Platform, y=mean_sales, group = 1))+
+  # geom_bar(stat="identity")
+```
+
+From the plot, we can see that, overall, north america contributes the
+most to the global sales of video games across most platforms; excluding
+the PS4 and PC (for which the highest mean sales is Europe), North
+America is the biggest seller of video games across platforms. This will
+be due to a mix of large population and a high percentage of said
+population with access to these consoles. The opposite can be said about
+the lower end: Japan and ‘Other’ regions are on the lower end of mean
+sales for all platforms: they, in this context, have lower populations
+and lower percentage of said populations with access to these consoles
+and therefore it makes sense that they do not contribute as highly to
+the total global sales of video games across all platforms.
 
 ### Third Data
 
-#### A point gragh presenting the relationship between the pubisher and the mean japan’s sales, which are the top five ones. (x = Publisher, y = mean\_JP\_Sales).
+#### A point gragh presenting the relationship between the pubisher and the mean japan’s sales, which are the top five ones. (x = Publisher, y = mean_JP_Sales).
 
 #### code and plotting
 
@@ -200,6 +246,23 @@ video_game_sales %>%
 
 #### code and plotting
 
+``` r
+sample_data <- video_game_sales %>%
+ sample_n(500)
+
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales)) +
+  geom_jitter()+
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() 
+```
+
+    ## Warning: Removed 259 rows containing missing values (geom_point).
+
+![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
 ### Fifth Data
 
 #### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
@@ -208,15 +271,47 @@ video_game_sales %>%
 
 ### Sixth Data
 
-#### A ridge-plot graph comparing the distribution of high selling games (games with over XXX global sales) over the years for different publishers/developers
+#### A bar plot of Publishers of the high selling games(top 50) across the world.
 
 #### code and plotting
+
+``` r
+high_selling_games <- video_game_sales %>%
+  filter(11.3 < Global_Sales)
+high_selling_games %>%
+  group_by(Publisher) %>%
+  ggplot(aes(x = Publisher)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 10, size = 6)) +
+  labs(title = "Publisher of top 50 high saleing games", subtitle = "and the amount of game released")
+```
+
+![](proposal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- --> We can see
+that Nintendo have the most game in top 50 high selling games, its about
+30+ and in total there is 5 publisher having game in the top 50. Where
+other publisher are all having games less than 10.
 
 ### Seventh data
 
 #### A list of mean global sales per genre, with box plot to show clearly the spread for each genre
 
 #### code and plotting
+
+``` r
+mean_Genre_video_game <- video_game_sales %>%
+  group_by(Genre) %>%
+  summarise(global_sales_mean = mean(Global_Sales)) 
+
+mean_Genre_video_game %>%
+  ggplot(aes(x = Genre, y= global_sales_mean)) +
+  geom_boxplot() +
+  labs(title = "mean global sales per genre",
+       x = "", y = "Mean Global Sales"
+       ) +
+  theme_minimal() 
+```
+
+![](proposal_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ### Eigth data
 
