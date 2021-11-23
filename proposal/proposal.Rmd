@@ -46,8 +46,6 @@ IN GENERAL, WE ARE ANSWERING THE QUESTION:
 
 It will follow the ensuing format:
 
-To be implemented as a function/script 
-[top_n(category_1, category2, number) -> {data frame of top `number` variables in the `category_1` category with the `category_2` category values}
 
 ```{r top-of-category}
 top_genre <- video_game_sales%>%
@@ -63,6 +61,14 @@ top_platform <- video_game_sales%>%
   slice_max(global, n = 10)
   
 top_platform_list <<- top_platform$Platform
+
+top_games <- video_game_sales%>%
+  group_by(Name)%>%
+  summarise(sales = sum(Global_Sales))%>%
+  slice_max(sales, n = 50)
+
+top_games_list <<- top_games$Name
+
 ```
 
 ### First Data
@@ -96,8 +102,6 @@ This plot clearly shows that, from the top 5 best selling genres of the data, sp
 
 This plot will show us, not only the most successful platform (the platform with the highest mean global sales) but also where these sales come from: the splitting of the mean sales to region will show where particular platforms perform especially well and where they do not. This will allow us to determine how much platforms in certain regions will influence the global sales of a game.
 
-#### Possibly change to bars for clarity
-
 #### code and plotting.
 
 ```{r Mean_sale_vs_platform}
@@ -113,22 +117,24 @@ mean_df_long <- mean_df%>%
   pivot_longer(
     cols = -Platform,
     names_to = "Region",
-    values_to = "mean value"
+    values_to = "meanValue"
   )
 ```
 
 ```{r mean_df_plot}
-mean_df %>%
-  ggplot(aes(x=Platform))+
-  theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  geom_point(aes(y=mean_sales, colour = "Global"))+
-  geom_point(aes(y=mean_NA, colour = "North America"))+
-  geom_point(aes(y=mean_JP, colour = "Japan"))+
-  geom_point(aes(y=mean_EU, colour = "Europe"))+
-  geom_point(aes(y=mean_Other, colour = "Other"))
-  #+ ggplot(aes(x=Platform, y=mean_sales, group = 1))+
-  # geom_bar(stat="identity")
+mean_df_long %>%
+  #ggplot(aes(x=Platform))+
+  # geom_point(aes(y=mean_sales, colour = "Global"))+
+  # geom_point(aes(y=mean_NA, colour = "North America"))+
+  # geom_point(aes(y=mean_JP, colour = "Japan"))+
+  # geom_point(aes(y=mean_EU, colour = "Europe"))+
+  # geom_point(aes(y=mean_Other, colour = "Other"))
+  ggplot(aes(x = Platform, y = meanValue, fill = Region, group = Region)) +
+  geom_bar(stat="identity", position='dodge')+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
 ```
+### Analysis
+
 From the plot, we can see that, overall, north america contributes the most to the global sales of video games across most platforms; excluding the PS4 and PC (for which the highest mean sales is Europe), North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and 'Other' regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.
 
 ### Third Data
@@ -191,7 +197,10 @@ sample_data %>%
 
 ```{r }
 high_selling_games <- video_game_sales %>%
-  filter(11.3 < Global_Sales)
+  filter(Name %in% top_games_list)%>%
+  group_by(Name = tolower(Name)) %>%
+  summarise_each(funs(max))%>%
+  summarise(Publisher, Global_Sales)
 high_selling_games %>%
   group_by(Publisher) %>%
   ggplot(aes(x = Publisher)) +
@@ -236,8 +245,6 @@ mean_Genre_video_game %>%
 
 ```
 
-
-### etc...
 
 
 ### Comparison of all different data and analogies

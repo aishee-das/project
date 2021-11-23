@@ -95,10 +95,6 @@ IN GENERAL, WE ARE ANSWERING THE QUESTION:
 
 It will follow the ensuing format:
 
-To be implemented as a function/script \[top_n(category_1, category2,
-number) -> {data frame of top `number` variables in the `category_1`
-category with the `category_2` category values}
-
 ``` r
 top_genre <- video_game_sales%>%
   group_by(Genre)%>%
@@ -113,6 +109,11 @@ top_platform <- video_game_sales%>%
   slice_max(global, n = 10)
   
 top_platform_list <<- top_platform$Platform
+
+top_games <- video_game_sales%>%
+  group_by(Name)%>%
+  summarise(global = sum(Global_Sales))%>%
+  slice_max(global, n = 50)
 ```
 
 ### First Data
@@ -184,27 +185,24 @@ mean_df_long <- mean_df%>%
   pivot_longer(
     cols = -Platform,
     names_to = "Region",
-    values_to = "mean value"
+    values_to = "meanValue"
   )
 ```
 
 ``` r
-mean_df %>%
-  ggplot(aes(x=Platform))+
-  theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  geom_point(aes(y=mean_sales, colour = "Global"))+
-  geom_point(aes(y=mean_NA, colour = "North America"))+
-  geom_point(aes(y=mean_JP, colour = "Japan"))+
-  geom_point(aes(y=mean_EU, colour = "Europe"))+
-  geom_point(aes(y=mean_Other, colour = "Other"))
+mean_df_long %>%
+  #ggplot(aes(x=Platform))+
+  # geom_point(aes(y=mean_sales, colour = "Global"))+
+  # geom_point(aes(y=mean_NA, colour = "North America"))+
+  # geom_point(aes(y=mean_JP, colour = "Japan"))+
+  # geom_point(aes(y=mean_EU, colour = "Europe"))+
+  # geom_point(aes(y=mean_Other, colour = "Other"))
+  ggplot(aes(x = Platform, y = meanValue, fill = Region, group = Region)) +
+  geom_bar(stat="identity", position='dodge')+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
 ```
 
-![](proposal_files/figure-gfm/mean_df_plot-1.png)<!-- -->
-
-``` r
-  #+ ggplot(aes(x=Platform, y=mean_sales, group = 1))+
-  # geom_bar(stat="identity")
-```
+![](proposal_files/figure-gfm/mean_df_plot-1.png)<!-- --> ### Analysis
 
 From the plot, we can see that, overall, north america contributes the
 most to the global sales of video games across most platforms; excluding
@@ -259,7 +257,7 @@ sample_data %>%
   theme_minimal() 
 ```
 
-    ## Warning: Removed 259 rows containing missing values (geom_point).
+    ## Warning: Removed 261 rows containing missing values (geom_point).
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
