@@ -180,7 +180,6 @@ video_game_sales %>%
 
 ```{r }
 
-
 ```
 
 
