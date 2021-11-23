@@ -208,7 +208,19 @@ We can see that Nintendo have the most game in top 50 high selling games, its ab
 #### code and plotting
 
 ```{r }
+mean_Genre_video_game <- video_game_sales %>%
+  group_by(Genre) %>%
+  summarise(global_sales_mean = mean(Global_Sales)) 
 
+mean_Genre_video_game %>%
+  ggplot(aes(x = Genre, y= global_sales_mean)) +
+  geom_boxplot() +
+  labs(title = "mean global sales per genre",
+       x = "", y = "Mean Global Sales"
+       ) +
+  theme_minimal() 
+  
+  
 ```
 
 
@@ -219,6 +231,7 @@ We can see that Nintendo have the most game in top 50 high selling games, its ab
 #### code and plotting
 
 ```{r }
+
 
 
 ```
