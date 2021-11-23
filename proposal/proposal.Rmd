@@ -104,7 +104,7 @@ This plot will show us, not only the most successful platform (the platform with
 
 #### code and plotting.
 
-```{r Mean_sale_vs_platform}
+```{r Mean_sale_vs_platform, echo=FALSE}
 mean_df <- video_game_sales %>%
   group_by(Platform) %>%
   summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
@@ -112,7 +112,7 @@ mean_df <- video_game_sales %>%
   filter(Platform %in% top_platform_list)
 ```
 
-```{r pivot_longer_mean_df}
+```{r pivot_longer_mean_df, echo=FALSE}
 mean_df_long <- mean_df%>%
   pivot_longer(
     cols = -Platform,
