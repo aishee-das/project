@@ -89,10 +89,14 @@ genre_sales_yrs <- video_game_sales%>%
   filter(Genre %in% top_genre_list) %>%
   distinct()
 
+genre_sales_yrs$Year_of_Release <- as.numeric(as.character(genre_sales_yrs$Year_of_Release))
+
 genre_sales_yrs%>%
   ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
   theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  geom_line()
+  geom_line()+
+  scale_x_continuous(name ="Year of release", breaks=seq(1980, 2020, 5))+
+  scale_y_continuous(name ="Total global sales", breaks=seq(0, 150, 50))
 ```
 This plot clearly shows that, from the top 5 best selling genres of the data, sports and action games have the biggest peaks (approximately 135 million global sales). But we can also see that these genres have not always been the best selling: while they have not had the best selling in the past 15 years, platform games have consistently achieved a large amount of global sales (for the entirety of the period between 1984 and 1995, it was by far the best selling genre). Yet in the most recent years, games of the platforming genre have certainly been dropping off in sales.
 
@@ -226,9 +230,10 @@ high_selling_games <- video_game_sales %>%
   summarise(Publisher, Global_Sales)
 high_selling_games %>%
   group_by(Publisher) %>%
-  ggplot(aes(x = Publisher)) +
+  ggplot(aes(x = Publisher, fill = Publisher)) +
   geom_bar() +
-  theme(axis.text.x = element_text(angle = 10, size = 6)) +
+  theme(axis.text.x = element_text(angle = 10, size = 6),
+        legend.position = "none") +
   labs(title = "Publisher of top 50 high saleing games", subtitle = "and the amount of game released")
 ```
 We can see that Nintendo have the most game in top 50 high selling games, its about 30+ and in total there is 5 publisher having game in the top 50. Where other publisher are all having games less than 10.

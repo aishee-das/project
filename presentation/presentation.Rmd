@@ -69,36 +69,115 @@ top_games_list <<- top_games$Name
 
 - We will look at the correlation between each of these factors and decide on the most influential characteristic in the sales of a game.
 
-# The correlation between genre and sales:
-
+# The correlation between genre and sales: {data-background-image="img/gamecontr2.png"}
 ::: columns
-:::: {.column width="35%"}
-* We have produced a line graph showing the relationship between genre of game and total global sales over the years
-* goes here
+:::: {.column width="30%"}
+A line graph showing the trend between genre of game and total global sales over the years
 ::::
 
-:::: {.column width="65%"}
-```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
 genre_sales_yrs <- video_game_sales%>%
   group_by(Year_of_Release, Genre)%>%
   filter(!Year_of_Release == "N/A") %>%
   filter(!is.na(Genre)) %>%
-  summarise(Year_of_Release, Genre, Global_Sales = sum(Global_Sales))%>%
+  summarise(Year_of_Release, Genre, Global_Sales = sum(Global_Sales), .groups = 'drop')%>%
   group_by(Genre)%>%
   filter(Genre %in% top_genre_list) %>%
   distinct()
 
+genre_sales_yrs$Year_of_Release <- as.numeric(as.character(genre_sales_yrs$Year_of_Release))
+
 genre_sales_yrs%>%
   ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
-  theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  geom_line()
+  theme(axis.text.x = element_text(angle = 45, size = 5)) +
+  geom_line()+
+  scale_x_continuous(name ="Year of release", breaks=seq(1980, 2020, 5))+
+  scale_y_continuous(name ="Total global sales", breaks=seq(0, 150, 50))
 ```
 ::::
 :::
 
-# Data 6 - Adam
 
+## The correlation between genre and sales: {data-background-image="img/gamecontr2.png"}
+- This plot clearly shows that, from the top 5 best selling genres of the data, sports and action games have the biggest peaks (approximately 135 million global sales).
+- But, these recently successful genres haven't always been the best selling: while not at the top spots in the last 15 years, platform games have consistently totaled a lot of global sales (for the entirety of the period between 1984 and 1995, it was by far the best selling genre). Recently, the genre is relatively less successful.
 
+## The correlation between genre and sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="35%"}
+Overall, genre does have an impact on the total sales of a game, but which genre this is changes over time - currently, now sports games are clearly the best selling games.
+::::
+
+:::: {.column width="65%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+genre_sales_yrs%>%
+  ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
+  theme(axis.text.x = element_text(angle = 45, size = 5)) +
+  geom_line()+
+  scale_x_continuous(name ="Year of release", breaks=seq(1980, 2020, 5))+
+  scale_y_continuous(name ="Total global sales", breaks=seq(0, 150, 50))
+```
+::::
+:::
+
+# The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="30%"}
+A bar graph showing the number of best selling games released by each publisher
+::::
+
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+high_selling_games <- video_game_sales %>%
+  filter(Name %in% top_games_list)%>%
+  group_by(Name = tolower(Name)) %>%
+  summarise_each(funs(max))%>%
+  summarise(Publisher, Global_Sales)
+high_selling_games %>%
+  group_by(Publisher) %>%
+  ggplot(aes(x = Publisher, fill = Publisher)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 25, size = 6),
+        legend.position = "none") +
+  labs(title = "Publisher of top 50 best selling games", subtitle = "and the amount of games within the top 50")+
+  scale_x_discrete(labels=c("Activision"="Activision", "Aspyr"="Aspyr",
+                            "Bethesda Softworks"="Bethesda", "Electronic Arts"="EA",
+                            "LucasArts"="LucasArts", "Microsoft Game Studios"="Microsoft",
+                            "Nintendo"="Nintendo", "Sony Computer Entertainment"="Sony",
+                            "Sony Computer Entertainment Europe"="Sony Europe", "Take-Two Interactive"="Take-Two"))
+```
+::::
+:::
+
+## The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="65%"}
+It is clear to see that Nintendo is overwhelming the publisher with the most best selling games (games in the top 50) with almost half of the list taken up by them. This shows that genre does influence the success of games. This is probably because Nintendo make high quality, nostalgic and playable games.
+::::
+
+:::: {.column width="35%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+high_selling_games <- video_game_sales %>%
+  filter(Name %in% top_games_list)%>%
+  group_by(Name = tolower(Name)) %>%
+  summarise_each(funs(max))%>%
+  summarise(Publisher, Global_Sales)
+high_selling_games %>%
+  group_by(Publisher) %>%
+  ggplot(aes(x = Publisher, fill = Publisher)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 25, size = 6),
+        legend.position = "none") +
+  labs(title = "Publisher of top 50 best selling games", subtitle = "and the amount of games within the top 50")+
+  scale_x_discrete(labels=c("Activision"="Activision", "Aspyr"="Aspyr",
+                            "Bethesda Softworks"="Bethesda", "Electronic Arts"="EA",
+                            "LucasArts"="LucasArts", "Microsoft Game Studios"="Microsoft",
+                            "Nintendo"="Nintendo", "Sony Computer Entertainment"="Sony",
+                            "Sony Computer Entertainment Europe"="Sony Europe", "Take-Two Interactive"="Take-Two"))
+```
+::::
+:::
 # Data 3 - Karl
 
 
@@ -174,60 +253,11 @@ mean_df_long %>%
 # Conclusion - Haoran
 
 
-# Hello World
-
-- Click the `Knit` button to compile your presentation
-
-- Make sure to commit and push all resulting files to your GitHub repo
-
-# Using reveal.js
-
-It's possible to have a horizontal sliding transition as well as nest multiple slides to create a vertical stack.
-
-When presenting, you use the left/right arrows to step through the top-level (horizontal) slides. When you arrive at a vertical stack you can optionally press the up/down arrows to view the vertical slides or skip past them by pressing the right arrow.
-
-(click the down key now)
-
-## reveal.js
-
-- The presentation is created using the `reveal.js` package
-
-- You can create a slide show broken up into sections by using the # and ## heading tags
-
-- You can also create a new slide without a header using a horizontal rule (----)
-
-----
-
-- You can also add pauses between content on a slide using (". . .")
-
-. . .
-
-Like this.
-
-...or using "::: fragment"
-
-::: fragment
-
-Like this.
-
-:::
-
-# Layouts
-
-You can use plain text
-
-- or bullet points
-
-<div>
-  <div style="float: left; width: 50%;">or text in two columns</div>
-  <div style="float: left; width: 50%;">like this</div>
-</div>
-
-because you can combine HTML and Markdown syntax.
+# Extra if you need
 
 <p style="font-size: 8pt; position: absolute; bottom: -5em; width: 100%; text-align: center;">*You can also add footnotes</p>
 
-# Code
+## Code
 
 ```{r boring-regression}
 # a boring regression
@@ -236,7 +266,7 @@ tidy(model)
 glance(model)
 ```
 
-# Plots
+## Plots
 
 ```{r recode-species, echo = FALSE}
 # In this chunk I'm doing a bunch of analysis that I don't want to present 
@@ -292,7 +322,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = species, color = species)) +
 ::::
 :::
 
-# Tables
+## Tables
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
@@ -300,12 +330,8 @@ If you want to generate a table, make sure it is in the HTML format (instead of 
 kable(head(iris), format = "html")
 ```
 
-# Images
+## Image
 
 ```{r castle, echo = FALSE, out.width = "60%", fig.align = "center", fig.cap = "Image credit: Photo by Jörg Angeli on Unsplash."}
 include_graphics("https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80")
 ```
-
-Or you can also include a full page image. See next slide.
-
-## {data-background-image="https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"}
