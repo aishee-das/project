@@ -1,7 +1,7 @@
 ---
 title: "The factors affecting sales of video games"
 subtitle: <font size='6'>From 1980 to 2020</font>
-author: <font size='8'>Disco <br> Names of team members</font>
+author: <font size='8'>Disco <br> Adam, Aishee, Haoran, Karl</font>
 institute: <font size='10'>University of Edinburgh</font>
 date: <font size = '6'>`r Sys.Date()`</font>
 output:
@@ -17,6 +17,15 @@ library(tidymodels)
 library(palmerpenguins)
 library(knitr)
 library(revealjs)
+
+library(broom)
+library(dsbox)
+library(ggridges)
+library(ggplot2)
+library(readr)
+library(here)
+library(scales)
+library(dplyr)
 ```
 
 ```{r setup, include=FALSE}
@@ -25,19 +34,67 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 ```
 
 ```{r load-data, include=FALSE}
-# Load your data here
+video_game_sales <- read_csv(here::here("data/Video_Games_Sales_as_at_22_Dec_2016.csv"))
 ```
 
-# A statement of the overall goal / research question 
+```{r top-of-category, include=FALSE}
+top_genre <- video_game_sales%>%
+  group_by(Genre)%>%
+  summarise(global = sum(Global_Sales))%>%
+  slice_max(global, n = 5)
+  
+top_genre_list <<- top_genre$Genre
 
-# Opening - Adam
+top_platform <- video_game_sales%>%
+  group_by(Platform)%>%
+  summarise(global = sum(Global_Sales))%>%
+  slice_max(global, n = 10)
+  
+top_platform_list <<- top_platform$Platform
+
+top_games <- video_game_sales%>%
+  group_by(Name)%>%
+  summarise(sales = sum(Global_Sales))%>%
+  slice_max(sales, n = 50)
+
+top_games_list <<- top_games$Name
+
+```
+
+# A statement of our overall goal: {data-background-image="img/gamecontr.png"}
 
 - We will look at the different relationships between the sales (global and region specific) of a game and different factors in its release and success.
 
-- The different factors we look at inclue genre, platform of release, user and critic score.
+- The different factors we look at include genre, platform of release, user and critic score.
 
-# Data 1 - Adam
+- We will look at the correlation between each of these factors and decide on the most influential characteristic in the sales of a game.
 
+# The correlation between genre and sales:
+
+::: columns
+:::: {.column width="35%"}
+* We have produced a line graph showing the relationship between genre of game and total global sales over the years
+* goes here
+::::
+
+:::: {.column width="65%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+genre_sales_yrs <- video_game_sales%>%
+  group_by(Year_of_Release, Genre)%>%
+  filter(!Year_of_Release == "N/A") %>%
+  filter(!is.na(Genre)) %>%
+  summarise(Year_of_Release, Genre, Global_Sales = sum(Global_Sales))%>%
+  group_by(Genre)%>%
+  filter(Genre %in% top_genre_list) %>%
+  distinct()
+
+genre_sales_yrs%>%
+  ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
+  theme(axis.text.x = element_text(angle = 45, size = 6)) +
+  geom_line()
+```
+::::
+:::
 
 # Data 6 - Adam
 
