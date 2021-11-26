@@ -231,7 +231,7 @@ high_selling_games %>%
   theme(axis.text.x = element_text(angle = 10, size = 6)) +
   labs(title = "Publisher of top 50 high saleing games", subtitle = "and the amount of game released")
 ```
-We can see that Nintendo have the most game in top 50 high selling games, its about 30+ and in total there is 5 publisher having game in the top 50. Where other publisher are all having games less than 10.
+We can see that Nintendo have the most game in top 50 high selling games, its about 20+ and in total there is 9 publishers having game in the top 50. Where other publisher are all having games less than 10. So we can see that the game published by Nintendo are having more sales, where Nintendo is such a large company which having a large amount of money so the game published from Nintendo do have a higher quality.
 
 ### Seventh data
 
