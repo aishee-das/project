@@ -1,9 +1,10 @@
-Project title
+WHICH FACTOR HAS THE BIGGEST INFLUENCE OF SALES ON VIDEO GAMES?
 ================
-by Team name
+by Team Disco
 
 ## Summary
 
+instrucitons: 
 Write-up of your project and findings go here. Think of this as the text
 of your presentation. The length should be roughly 5 minutes when read
 out loud. Although pacing varies, a 5-minute speech is roughly 750
@@ -21,6 +22,26 @@ to hide your code with `echo = FALSE` unless the point you are trying to
 make is about the code itself. Your results with proper output and
 graphics go in your presentation, this space is for a brief summary of
 your project.
+}
+```
+
+### Opening
+
+Today we will be looking at the factors affecting the sales of different video games.
+
+So, what will we be discussing? We are going to look at the different relationships between the sales of a game and different factors in its release and success. These sales and success may be both globally and regionally.
+The factors include genre, platform, user score, critic score, et cetera.
+Using these comparisons, we can look at the strongest and weakest correlations and decide which factor is the most influential in a game's sales.
+
+### Genre vs sales
+Here we have a line graph showing the trend between genre of game and total global sales.
+From the top 5 best selling genres, sports and action games have the biggest peaks of about 135 million dollars in combined sales and have recently been the most popular.
+But these have not always been the highest selling genres: platform games have consistently achieved a large amount of global sales and was the significantly the best selling genre from 1984 and 1995. This genre has dropped off in recent years.
+Overall, genre certainly does have a big impact on the sales and success of a game, but which genre this is, does change over time. Right now, action games are the best selling games.
+
+### Publisher vs sales
+Here we have a bar graph showing the trend between publishers of games and number of games in the top 50 best selling list.
+From the top 50 best selling games, we can see Nintendo is by far the publisher with the most best selling games taking up almost half of the list. We can see from this that, very generally, the publisher does influence the success of games. Nintendo is so popular, most likely, because it makes such high quality, nostalgic games that are playable by a wide audience.
 
 ## Presentation
 
@@ -28,12 +49,14 @@ Our presentation can be found [here](presentation/presentation.html).
 
 ## Data
 
-Include a citation for your data here. See
-<http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840> for guidance
-on proper citation for datasets. If you got your data off the web, make
-sure to note the retrieval date.
+- R. Kirubi <https://www.kaggle.com/rush4ratio>
+- 2016 [updated frequently up until 26/11/2021]
+- Video Game Sales with Ratings
+- Data file
+- Video game sales from Vgchartz. Corresponding ratings from Metacritic
+- Data retreived on 22/10/2021 See: <https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings>
 
 ## References
 
-List any references here. You should, at a minimum, list your data
-source.
+- Data source: <https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings>
+- Game control image: <https://www.pinclipart.com/pindetail/iTobJwJ_video-game-emoji-clipart-video-games-png-transparent/>

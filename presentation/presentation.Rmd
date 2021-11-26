@@ -153,7 +153,7 @@ high_selling_games %>%
 ## The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
 ::: columns
 :::: {.column width="65%"}
-It is clear to see that Nintendo is overwhelming the publisher with the most best selling games (games in the top 50) with almost half of the list taken up by them. This shows that genre does influence the success of games. This is probably because Nintendo make high quality, nostalgic and playable games.
+It is clear to see that Nintendo is overwhelming the publisher with the most best selling games (games in the top 50) with almost half of the list taken up by them. This shows that publisher does influence the success of games. This is probably because Nintendo make high quality, nostalgic and playable games.
 ::::
 
 :::: {.column width="35%"}
