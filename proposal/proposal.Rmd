@@ -198,7 +198,7 @@ sample_data1 <- video_game_sales %>%
 
 sample_data1 %>%
   filter(!is.na(User_Score)) %>%
-  ggplot(aes(as.numeric(User_Score), x = User_Score, y = User_Count , color = Global_Sales)) +
+  ggplot(aes(as.numeric(as.character(User_Score)), x = User_Score, y = User_Count , color = Global_Sales)) +
   geom_jitter()+
   labs(title = "How user score relates to user count",
        x = "User Score", y = "User Count"
