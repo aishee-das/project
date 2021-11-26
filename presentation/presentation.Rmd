@@ -139,7 +139,7 @@ mean_df_long %>%
   scale_fill_viridis_d()
 ```
 
-## Explaination
+## Brief Explaination
 
 ::: columns
 :::: column
@@ -175,6 +175,10 @@ mean_df_long %>%
 ```
 ::::
 :::
+
+## Explaination
+
+From the plot, we can see that, overall, north america contributes the most to the global sales of video games across most platforms; excluding the PS4 and PC (for which the highest mean sales is Europe), North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and 'Other' regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.
 
 # Conclusion - Haoran
 
