@@ -185,6 +185,7 @@ sample_data %>%
 
 From the graph shown above, we can see that critic score affects global sales positively i.e, the higher the critic score, the more the global sales are. This aligns with something we could have already predicted before. Here, I have taken a sample of 500 random observations from 16719 observations. This is because plotting a graph with 16719 observations did not seem to show a very clear trend. So this shows a different graph every time as it picks a random bunch of 500 observations but in almost every single graph, we see a positive trend. We can also see a lot of critic scores which barely affects the global sales. For example we can see critic score of above 60 which correlates to global sale of 0. This shows we can not really depend on critic scores to see how global sales are affected by it. Therefore we can conclude that critic score is most definitetly, not one of the factors which will have the biggest influence on video games.   
 
+### Fifth data
 
 #### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
 (???)
