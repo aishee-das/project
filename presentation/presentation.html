@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Team name   Names of team members" />
-  <meta name="dcterms.date" content="2021-11-19" />
-  <title>Presentation title</title>
+  <meta name="author" content="Disco   Adam, Aishee, Haoran, Karl" />
+  <meta name="dcterms.date" content="2021-11-26" />
+  <title>The factors affecting sales of video games</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -133,18 +133,69 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Presentation title</h1>
-  <h1 class="subtitle"><font size='6'>Presentation subtitle (if any)</font></h1>
-  <h2 class="author"><font size='8'>Team name <br> Names of team members</font></h2>
+  <h1 class="title">The factors affecting sales of video games</h1>
+  <h1 class="subtitle"><font size='6'>From 1980 to 2020</font></h1>
+  <h2 class="author"><font size='8'>Disco <br> Adam, Aishee, Haoran, Karl</font></h2>
   <h3 class="institute"><font size='10'>University of Edinburgh</font></h2>
-  <h3 class="date"><font size = '6'>2021-11-19</font></h3>
+  <h3 class="date"><font size = '6'>2021-11-26</font></h3>
 </section>
 
-<section id="a-statement-of-the-overall-goal-research-question" class="slide level2" data-background-image="img/confetti.jpg">
-<h2 data-background-image="img/confetti.jpg">A statement of the overall goal / research question</h2>
+<section id="a-statement-of-our-overall-goal" class="title-slide slide level1" data-background-image="img/gamecontr.png">
+<h1 data-background-image="img/gamecontr.png">A statement of our overall goal:</h1>
+<ul>
+<li><p>We will look at the different relationships between the sales (global and region specific) of a game and different factors in its release and success.</p></li>
+<li><p>The different factors we look at include genre, platform of release, user and critic score.</p></li>
+<li><p>We will look at the correlation between each of these factors and decide on the most influential characteristic in the sales of a game.</p></li>
+</ul>
 </section>
-<section id="section-title" class="title-slide slide level1">
-<h1>Section title</h1>
+
+<section id="the-correlation-between-genre-and-sales" class="title-slide slide level1">
+<h1>The correlation between genre and sales:</h1>
+<div class="columns">
+<div class="column" style="width:35%;">
+<ul>
+<li>We have produced a line graph showing the relationship between genre of game and total global sales over the years</li>
+<li>goes here</li>
+</ul>
+</div><div class="column" style="width:65%;">
+<pre><code>## `summarise()` has grouped output by &#39;Year_of_Release&#39;, &#39;Genre&#39;. You can override using the `.groups` argument.</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-1-1.png" width="100%" /></p>
+</div>
+</div>
+</section>
+
+<section id="data-6---adam" class="title-slide slide level1">
+<h1>Data 6 - Adam</h1>
+
+</section>
+
+<section id="data-3---karl" class="title-slide slide level1">
+<h1>Data 3 - Karl</h1>
+
+</section>
+
+<section id="data-7---karl" class="title-slide slide level1">
+<h1>Data 7 - Karl</h1>
+
+</section>
+
+<section id="data-4---aishee" class="title-slide slide level1">
+<h1>Data 4 - Aishee</h1>
+
+</section>
+
+<section id="data-5---aishee" class="title-slide slide level1">
+<h1>Data 5 - Aishee</h1>
+
+</section>
+
+<section id="data-2---haoran" class="title-slide slide level1">
+<h1>Data 2 - Haoran</h1>
+
+</section>
+
+<section id="conclusion---haoran" class="title-slide slide level1">
+<h1>Conclusion - Haoran</h1>
 
 </section>
 
@@ -206,15 +257,15 @@ like this
 
 <section id="code" class="title-slide slide level1">
 <h1>Code</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 5
 ##   term        estimate std.error statistic  p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ## 1 (Intercept)   -17.6      6.76      -2.60 1.23e- 2
 ## 2 speed           3.93     0.416      9.46 1.49e-12</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -236,7 +287,7 @@ like this
 <li>goes here</li>
 </ul>
 </div><div class="column">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-1-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="100%" /></p>
 </div>
 </div>
 </section>
@@ -249,7 +300,7 @@ like this
 <li>goes here</li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="100%" /></p>
 </div>
 </div>
 </section></section>
@@ -392,22 +443,6 @@ setosa
 <section id="section" class="slide level2" data-background-image="https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80">
 <h2 data-background-image="https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80"></h2>
 </section></section>
-<section id="math-expressions" class="title-slide slide level1">
-<h1>Math Expressions</h1>
-<p>You can write LaTeX math expressions inside a pair of dollar signs ($…$), e.g. <span class="math inline">\(\alpha+\beta\)</span>. You can use the display style with double dollar signs:</p>
-<p><span class="math display">\[\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i\]</span></p>
-</section>
-
-<section id="feeling-adventurous" class="title-slide slide level1">
-<h1>Feeling adventurous?</h1>
-<p>You can learn more about the options available at the following pages:</p>
-<ul>
-<li><p><a href="https://github.com/rstudio/revealjs" class="uri">https://github.com/rstudio/revealjs</a></p></li>
-<li><p><a href="https://bookdown.org/yihui/rmarkdown/revealjs.html" class="uri">https://bookdown.org/yihui/rmarkdown/revealjs.html</a></p></li>
-<li><p><a href="http://www.jenniferbradham.org/post/reveal_js_markdown/" class="uri">http://www.jenniferbradham.org/post/reveal_js_markdown/</a></p></li>
-<li><p><a href="https://revealjs.com/" class="uri">https://revealjs.com/</a></p></li>
-</ul>
-</section>
     </div>
   </div>
 
