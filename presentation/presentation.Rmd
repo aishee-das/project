@@ -81,6 +81,7 @@ mean_df_long %>%
 ```
 
 ## Explaination
+
 ::: columns
 :::: column
 * Some text
