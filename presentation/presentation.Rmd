@@ -113,8 +113,66 @@ genre_sales_yrs%>%
 
 # Data 2 - Haoran
 
+```{r Mean-sale-vs-platform, echo = FALSE}
+mean_df <- video_game_sales %>%
+  group_by(Platform) %>%
+  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales)) %>%
+  group_by(Platform) %>%
+  filter(Platform %in% top_platform_list)
+```
+
+```{r pivot-longer-mean-df, echo=FALSE}
+mean_df_long <- mean_df %>%
+  pivot_longer(
+    cols = -Platform,
+    names_to = "Region",
+    values_to = "meanValue"
+  )
+```
+
+```{r mean-df-plot, echo = FALSE}
+mean_df_long %>%
+  ggplot(aes(x = Platform, y = meanValue, fill = Region, group = Region)) +
+  geom_bar(stat="identity", position='dodge')+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
+```
+
+## Explaination
+::: columns
+:::: column
+* Some text
+* goes here
+::::
+
+:::: column
+```{r Mean-sale-vs-platform-data, echo = FALSE}
+mean_df <- video_game_sales %>%
+  group_by(Platform) %>%
+  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales)) %>%
+  group_by(Platform) %>%
+  filter(Platform %in% top_platform_list)
+```
+
+```{r pivot-longer-mean-df-data, echo=FALSE}
+mean_df_long <- mean_df %>%
+  pivot_longer(
+    cols = -Platform,
+    names_to = "Region",
+    values_to = "meanValue"
+  )
+```
+
+```{r mean-df-plot-data, echo = FALSE}
+mean_df_long %>%
+  ggplot(aes(x = Platform, y = meanValue, fill = Region, group = Region)) +
+  geom_bar(stat="identity", position='dodge')+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
+```
+::::
+:::
 
 # Conclusion - Haoran
+
 
 # Hello World
 
