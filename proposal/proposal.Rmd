@@ -161,6 +161,7 @@ video_game_sales %>%
   theme_minimal() 
 
 ```
+The Enix Corporation is the most popular publisher in Japen, which is around 1.09. However, the Nintendo has the lowest sales in Japan, which is around 0.6. And mean japan sales of Enix Corporation is amost twice than that of Nintendo.
 
 ### Fourth Data
 
@@ -255,10 +256,12 @@ mean_Genre_video_game %>%
   labs(title = "mean global sales per genre",
        x = "", y = "Mean Global Sales"
        ) +
+  theme(axis.text.x = element_text(angle = 30, size = 10)) +
   theme_minimal() 
   
   
 ```
+we can see that the publishers called Action has the lowest mean global sales among the 11 genres. Most mean global sales of genres are around 0.5. 
 
 
 
