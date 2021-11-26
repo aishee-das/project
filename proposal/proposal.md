@@ -112,8 +112,10 @@ top_platform_list <<- top_platform$Platform
 
 top_games <- video_game_sales%>%
   group_by(Name)%>%
-  summarise(global = sum(Global_Sales))%>%
-  slice_max(global, n = 50)
+  summarise(sales = sum(Global_Sales))%>%
+  slice_max(sales, n = 50)
+
+top_games_list <<- top_games$Name
 ```
 
 ### First Data
@@ -168,26 +170,7 @@ particular platforms perform especially well and where they do not. This
 will allow us to determine how much platforms in certain regions will
 influence the global sales of a game.
 
-#### Possibly change to bars for clarity
-
 #### code and plotting.
-
-``` r
-mean_df <- video_game_sales %>%
-  group_by(Platform) %>%
-  summarise(mean_NA = mean(NA_Sales), mean_EU = mean(EU_Sales), mean_JP = mean(JP_Sales), mean_Other = mean(Other_Sales), mean_sales = mean(Global_Sales))%>%
-  group_by(Platform)%>%
-  filter(Platform %in% top_platform_list)
-```
-
-``` r
-mean_df_long <- mean_df%>%
-  pivot_longer(
-    cols = -Platform,
-    names_to = "Region",
-    values_to = "meanValue"
-  )
-```
 
 ``` r
 mean_df_long %>%
@@ -242,6 +225,11 @@ video_game_sales %>%
 
 #### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
 
+This plot will show the relationship between critic score and global
+sales. It will help visualize how critic score affects global sales - if
+critic score has an effect on global sales either negatively or
+positively.
+
 #### code and plotting
 
 ``` r
@@ -249,23 +237,59 @@ sample_data <- video_game_sales %>%
  sample_n(500)
 
 sample_data %>%
-  ggplot(aes(x = Critic_Score, y = Global_Sales)) +
+  ggplot(aes(x = Critic_Score, y = Global_Sales, col = "red")) +
   geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "blue") +
   labs(title = "How critic score relates to global sales",
        x = "Critic Score", y = "Global Sales"
        ) +
-  theme_minimal() 
+  theme_minimal() + theme(legend.position = "none")
 ```
 
-    ## Warning: Removed 261 rows containing missing values (geom_point).
+    ## `geom_smooth()` using formula 'y ~ x'
+
+    ## Warning: Removed 258 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 258 rows containing missing values (geom_point).
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-### Fifth Data
+### Analysis
+
+From the graph shown above, we can see that critic score affects global
+sales positively i.e, the higher the critic score, the more the global
+sales are. This aligns with something we could have already predicted
+before. Here, I have taken a sample of 500 random observations from
+16719 observations. This is because plotting a graph with 16719
+observations did not seem to show a very clear trend. So this shows a
+different graph every time as it picks a random bunch of 500
+observations but in almost every single graph, we see a positive trend.
+We can also see a lot of critic scores which barely affects the global
+sales. For example we can see critic score of above 60 which correlates
+to global sale of 0. This shows we can not really depend on critic
+scores to see how global sales are affected by it. Therefore we can
+conclude that critic score is most definitetly, not one of the factors
+which will have the biggest influence on video games.
 
 #### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
 
+(???)
+
 #### code and plotting
+
+``` r
+video_game_sales %>%
+  ggplot(aes(x = Critic_Score, y = Critic_Count, col = "red")) +
+  geom_point()+
+  labs(title = "How critic score relates to critic count",
+       x = "Critic Score", y = "Critic Count"
+       ) +
+  theme_minimal()
+```
+
+    ## Warning: Removed 8582 rows containing missing values (geom_point).
+
+![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ### Sixth Data
 
@@ -275,7 +299,32 @@ sample_data %>%
 
 ``` r
 high_selling_games <- video_game_sales %>%
-  filter(11.3 < Global_Sales)
+  filter(Name %in% top_games_list)%>%
+  group_by(Name = tolower(Name)) %>%
+  summarise_each(funs(max))%>%
+  summarise(Publisher, Global_Sales)
+```
+
+    ## Warning: `summarise_each_()` was deprecated in dplyr 0.7.0.
+    ## Please use `across()` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_warnings()` to see where this warning was generated.
+
+    ## Warning: `funs()` was deprecated in dplyr 0.8.0.
+    ## Please use a list of either functions or lambdas: 
+    ## 
+    ##   # Simple named list: 
+    ##   list(mean = mean, median = median)
+    ## 
+    ##   # Auto named with `tibble::lst()`: 
+    ##   tibble::lst(mean, median)
+    ## 
+    ##   # Using lambdas
+    ##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_warnings()` to see where this warning was generated.
+
+``` r
 high_selling_games %>%
   group_by(Publisher) %>%
   ggplot(aes(x = Publisher)) +
@@ -316,8 +365,6 @@ mean_Genre_video_game %>%
 #### A comparison of global sales for games that were released in america against those that were not (simple 2 varaible bar graph with stacked year of release)
 
 #### code and plotting
-
-### etc…
 
 ### Comparison of all different data and analogies
 
