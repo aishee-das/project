@@ -28,9 +28,36 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 # Load your data here
 ```
 
-## A statement of the overall goal / research question {data-background-image="img/confetti.jpg"}
+# A statement of the overall goal / research question 
 
-# Section title
+# Opening - Adam
+
+- We will look at the different relationships between the sales (global and region specific) of a game and different factors in its release and success.
+
+- The different factors we look at inclue genre, platform of release, user and critic score.
+
+# Data 1 - Adam
+
+
+# Data 6 - Adam
+
+
+# Data 3 - Karl
+
+
+# Data 7 - Karl
+
+
+# Data 4 - Aishee
+
+
+# Data 5 - Aishee
+
+
+# Data 2 - Haoran
+
+
+# Conclusion - Haoran
 
 # Hello World
 
@@ -167,21 +194,3 @@ include_graphics("https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?i
 Or you can also include a full page image. See next slide.
 
 ## {data-background-image="https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"}
-
-# Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs (\$...\$), e.g. $\alpha+\beta$. You can use the display style with double dollar signs:
-
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-
-# Feeling adventurous?
-
-You can learn more about the options available at the following pages:
-
-- https://github.com/rstudio/revealjs
-
-- https://bookdown.org/yihui/rmarkdown/revealjs.html
-
-- http://www.jenniferbradham.org/post/reveal_js_markdown/
-
-- https://revealjs.com/
