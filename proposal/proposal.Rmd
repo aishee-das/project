@@ -194,11 +194,15 @@ From the graph shown above, we can see that critic score affects global sales po
 
 ```{r }
 sample_data1 <- video_game_sales %>%
- sample_n(50)
+ sample_n(500)%>%
+  filter(!is.na(User_Score)) %>%
+  filter(!(User_Score == 'tbd'))
+
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
 
 sample_data1 %>%
-  filter(!is.na(User_Score)) %>%
-  ggplot(aes(as.numeric(as.character(User_Score)), x = User_Score, y = User_Count , color = Global_Sales)) +
+  filter(User_Count > 200) %>%
+  ggplot(aes(x = User_Score, y = User_Count , color = Global_Sales)) +
   geom_jitter()+
   labs(title = "How user score relates to user count",
        x = "User Score", y = "User Count"

@@ -248,9 +248,9 @@ sample_data %>%
 
     ## `geom_smooth()` using formula 'y ~ x'
 
-    ## Warning: Removed 258 rows containing non-finite values (stat_smooth).
+    ## Warning: Removed 269 rows containing non-finite values (stat_smooth).
 
-    ## Warning: Removed 258 rows containing missing values (geom_point).
+    ## Warning: Removed 269 rows containing missing values (geom_point).
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
@@ -271,6 +271,8 @@ scores to see how global sales are affected by it. Therefore we can
 conclude that critic score is most definitetly, not one of the factors
 which will have the biggest influence on video games.
 
+### Fifth data
+
 #### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
 
 (???)
@@ -278,16 +280,22 @@ which will have the biggest influence on video games.
 #### code and plotting
 
 ``` r
-video_game_sales %>%
-  ggplot(aes(x = Critic_Score, y = Critic_Count, col = "red")) +
-  geom_point()+
-  labs(title = "How critic score relates to critic count",
-       x = "Critic Score", y = "Critic Count"
+sample_data1 <- video_game_sales %>%
+ sample_n(500)%>%
+  filter(!is.na(User_Score)) %>%
+  filter(!(User_Score == 'tbd'))
+
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
+
+sample_data1 %>%
+  filter(User_Count > 175) %>%
+  ggplot(aes(as.numeric(User_Score), x = User_Score, y = User_Count , color = Global_Sales)) +
+  geom_jitter()+
+  labs(title = "How user score relates to user count",
+       x = "User Score", y = "User Count"
        ) +
   theme_minimal()
 ```
-
-    ## Warning: Removed 8582 rows containing missing values (geom_point).
 
 ![](proposal_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
