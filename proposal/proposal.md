@@ -142,10 +142,14 @@ genre_sales_yrs <- video_game_sales%>%
     ## `summarise()` has grouped output by 'Year_of_Release', 'Genre'. You can override using the `.groups` argument.
 
 ``` r
+genre_sales_yrs$Year_of_Release <- as.numeric(as.character(genre_sales_yrs$Year_of_Release))
+
 genre_sales_yrs%>%
   ggplot(aes(x = Year_of_Release, y = Global_Sales, color = Genre, group = Genre)) +
   theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  geom_line()
+  geom_line()+
+  scale_x_continuous(name ="Year of release", breaks=seq(1980, 2020, 5))+
+  scale_y_continuous(name ="Total global sales", breaks=seq(0, 150, 50))
 ```
 
 ![](proposal_files/figure-gfm/unnamed-chunk-1-1.png)<!-- --> This plot
@@ -248,9 +252,15 @@ sample_data %>%
 
     ## `geom_smooth()` using formula 'y ~ x'
 
+<<<<<<< HEAD
     ## Warning: Removed 247 rows containing non-finite values (stat_smooth).
 
     ## Warning: Removed 247 rows containing missing values (geom_point).
+=======
+    ## Warning: Removed 256 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 256 rows containing missing values (geom_point).
+>>>>>>> d7fd93c4d5cf51e8b7aed9b58f5d200dc30ad850
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
