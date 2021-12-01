@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Disco   Adam, Aishee, Haoran, Karl" />
-  <meta name="dcterms.date" content="2021-11-30" />
+  <meta name="dcterms.date" content="2021-12-01" />
   <title>The factors affecting sales of video games</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,7 +137,7 @@
   <h1 class="subtitle"><font size='6'>From 1980 to 2020</font></h1>
   <h2 class="author"><font size='8'>Disco <br> Adam, Aishee, Haoran, Karl</font></h2>
   <h3 class="institute"><font size='10'>University of Edinburgh</font></h2>
-  <h3 class="date"><font size = '6'>2021-11-30</font></h3>
+  <h3 class="date"><font size = '6'>2021-12-01</font></h3>
 </section>
 
 <section id="a-statement-of-our-overall-goal" class="title-slide slide level1" data-background-image="img/gamecontr.png">
@@ -242,11 +242,37 @@
 </div>
 </div>
 </section></section>
-<section id="data-5---aishee" class="title-slide slide level1">
-<h1>Data 5 - Aishee</h1>
-
+<section>
+<section id="the-correlation-between-user-score-and-global-sales" class="title-slide slide level1" data-background-image="img/gamecontr2.png">
+<h1 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h1>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>A jitter plot showing the relationship between user score and total global sales over the years.</p>
+</div><div class="column" style="width:70%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="80%" /></p>
+</div>
+</div>
 </section>
-
+<section id="the-correlation-between-user-score-and-global-sales-1" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h2>
+<ul>
+<li>From the graph above, we can see that user score does not really have an impact on global sales.</li>
+<li>Here, I have taken a sample of 300 random observations from 16719 observations. So this plot shows a different graph as it picks 300 random observations we can sometimes see a positive trend, or not see a trend at all i.e the gradient is zero.</li>
+<li>If we were to compare user score and critic score, user score would be the least influencing factor out of the two.</li>
+</ul>
+</section>
+<section id="the-correlation-between-user-score-and-global-sales-2" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Overall, user score does not really have that much of an impact on the global sales of video games. Therefore we can conclude that user score is definitely not one of the factors which will have the biggest influence on video games.</p>
+</div><div class="column" style="width:50%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" width="100%" /></p>
+</div>
+</div>
+</section></section>
 <section>
 <section id="data-2---haoran" class="title-slide slide level1">
 <h1>Data 2 - Haoran</h1>
@@ -283,15 +309,15 @@
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 5
 ##   term        estimate std.error statistic  p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ## 1 (Intercept)   -17.6      6.76      -2.60 1.23e- 2
 ## 2 speed           3.93     0.416      9.46 1.49e-12</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -311,7 +337,7 @@
 <li>goes here</li>
 </ul>
 </div><div class="column">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-9-1.png" width="100%" /></p>
 </div>
 </div>
 </section>
@@ -324,7 +350,7 @@
 <li>goes here</li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" width="100%" /></p>
 </div>
 </div>
 </section>

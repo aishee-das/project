@@ -239,8 +239,61 @@ sample_data %>%
 :::
 
 
-# Data 5 - Aishee
+# The correlation between user score and global sales: {data-background-image="img/gamecontr2.png"} 
+::: columns
+:::: {.column width="30%"}
+A jitter plot showing the relationship between user score and total global sales over the years.
+::::
 
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
+sample_data1 <- video_game_sales %>%
+ sample_n(300)
+
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
+
+sample_data1 %>%
+  ggplot(aes(x = User_Score, y = Global_Sales, color = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "darkgreen") +
+  labs(title = "How user score relates to global sales",
+       x = "User Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+
+```
+::::
+:::
+
+## The correlation between user score and global sales: {data-background-image="img/gamecontr2.png"}
+- From the graph above, we can see that user score does not really have an impact on global sales.
+- Here, I have taken a sample of 300 random observations from 16719 observations. So this plot shows a different graph as it picks 300 random observations we can sometimes see a positive trend, or not see a trend at all i.e the gradient is zero.
+- If we were to compare user score and critic score, user score would be the least influencing factor out of the two.
+
+## The correlation between user score and global sales:{data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="50%"}
+Overall, user score does not really have that much of an impact on the global sales of video games. Therefore we can conclude that user score is definitely not one of the factors which will have the biggest influence on video games.
+::::
+
+:::: {.column width="50%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+sample_data1 <- video_game_sales %>%
+ sample_n(300)
+
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
+
+sample_data1 %>%
+  ggplot(aes(x = User_Score, y = Global_Sales, color = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "darkgreen") +
+  labs(title = "How user score relates to global sales",
+       x = "User Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+```
+::::
+:::
 
 # Data 2 - Haoran
 
