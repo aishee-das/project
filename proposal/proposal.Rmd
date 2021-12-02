@@ -143,26 +143,28 @@ From the plot, we can see that, overall, north america contributes the most to t
 
 ### Third Data
 
-#### A point gragh presenting the relationship between the pubisher and the mean japan's sales, which are the  top five ones. (x = Publisher, y = mean_JP_Sales).
+#### A bar chart presenting the relationship between the pubisher and the mean global sales, which contains the ten most popular Publishers in world.. (x = Publisher, y = mean_JP_Sales).
 
 #### code and plotting
 
 ```{r }
-video_game_sales %>%
+global_sales_publisher_top10 <- video_game_sales %>%
   group_by(Publisher) %>%
-  summarise(mean_JP_Sales = mean(JP_Sales)) %>%
-  arrange(desc(mean_JP_Sales)) %>%
-  slice(1:5) %>%
-  ggplot(aes(x = Publisher, y = mean_JP_Sales)) +
-  geom_point() +
-  labs(title = "The five most popular Publishers in Japan",
-       x = "Publisher", y = "mean_JP_Sales"
+  summarise(mean_global_Sales = mean(Global_Sales)) %>%
+  arrange(desc(mean_global_Sales)) %>%
+  slice(1:10)
+  
+global_sales_publisher_top10 %>%
+  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "The ten most popular Publishers in world",
+       x = "Publisher", y = "mean global Sales"
        ) +
-  theme_minimal() 
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
 
 ```
-The Enix Corporation is the most popular publisher in Japen, which is around 1.09. However, the Nintendo has the lowest sales in Japan, which is around 0.6. And mean japan sales of Enix Corporation is amost twice than that of Nintendo.
-
+From the bar chart, we can know that the publisher called palcom has the highrest 
 ### Fourth Data
 
 #### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
