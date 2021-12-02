@@ -165,7 +165,7 @@ global_sales_publisher_top10 %>%
    scale_y_discrete(labels=c("Palcom" = "Pal", 
                              "Red Orb" = "RED O",
                             "Nintendo" = "Nin",
-                            "	Arena Entertainment" = "AE",
+                            "Arena Entertainment" = "AE",
                             "UEP Systems" = "UEP S",
                             "RedOctane" = "REDO",
                             "Hello Games" = "HG",
@@ -260,7 +260,7 @@ We can see that Nintendo have the most game in top 50 high selling games, its ab
 
 ### Seventh data
 
-#### A point graph showing the relationship between the year to release and the global sales for the Publishers with the highest mean global sales.
+#### A point graph showing the relationship between the year of release and the global sales of the Publishers.
 
 #### code and plotting
 
@@ -280,11 +280,13 @@ publisher_year_global_sales %>%
   ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
   geom_point() +
   labs(title = "Global mean sales VS Year of release",
-       x = "year of release(from 1983 to 2016)", y = "mean global sales"
+       x = "release year(1983-2016)", y = "mean global sales"
        ) +
   theme_minimal() +
   theme(axis.text.x = element_blank()) +
-  theme(legend.justification = "bottom")
+  theme(legend.position  = "bottom") +
+  theme(legend.text = element_text(size = 6))
+ 
   
 ```
 The five publishers in the point graph all came from the list of the ten most popular publishers in the world, which were also continuously publish new games from 1983 to 2016. we can observe that the mean global sales for all of them were decreased. This means that they are no longer monopoly the market of the video game, and the whole market was split into more and more pieces. More and more game companies were coming into this market to grab the maket share. Consequently, the importance of the fator of the publishers was diminishing form year to year. Thus, the factor of publishers never be the one that influences the global sales most.
