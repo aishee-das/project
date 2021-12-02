@@ -178,7 +178,6 @@ high_selling_games %>%
 ```
 ::::
 :::
-# Data 3&7 - Karl
 # The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
 ::: columns
 :::: {.column width="30%"}
@@ -200,7 +199,8 @@ global_sales_publisher_top10 %>%
        x = "Publisher", y = "mean global Sales"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_text(angle = 15, size = 10),
+        legend.position = "none")
 ```
 ::::
 :::
@@ -224,20 +224,21 @@ global_sales_publisher_top10 %>%
        x = "Publisher", y = "mean global Sales"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_text(angle = 15, size = 10),
+        legend.position = "none")
+  
 
 ```
 ::::
 :::
 
-# The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+# The correlation between year and the global sales of previous Publishers: {data-background-image="img/gamecontr2.png"}
 ::: columns
 :::: {.column width="30%"}
 A point graph showing the relationship between the year to release and the global sales for the Publishers with the highest mean global sales.
 ::::
 
-
-:::: {.column width="70%"}
+:::: {.column width="40%"}
 ```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
 publisher_year_global_sales <- video_game_sales %>%
   group_by(Publisher, Year_of_Release)%>%
@@ -258,18 +259,20 @@ publisher_year_global_sales %>%
        x = "year of release(from 1983 to 2016)", y = "mean global sales"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_blank()) +
+  theme(legend.justification = "bottom")
 ```
 ::::
 :::
 
 
-## The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+## The correlation between year and the global sales of previous Publishers: {data-background-image="img/gamecontr2.png"}
 -The five publishers in the point graph all came from the list of the ten most popular publishers in the world, which were also continuously publish new games from 1983 to 2016. 
--we can observe that the mean global sales for all of them were decreased. This means that they are no longer monopoly the market of the video game, and the whole market was split into more and more pieces. More and more game companies were coming into this market to grab the maket share. 
-## The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+-we can observe that the mean global sales for all of them were decreased. This means that they are no longer monopoly the market of the video game, and the whole market was split into more and more pieces. More and more game companies were coming into this market to grab the maket share.
+
+## The correlation between year and the global sales of previous Publishers: {data-background-image="img/gamecontr2.png"}
 ::: columns
-:::: {.column width="35%"}
+:::: {.column width="30%"}
 -Consequently, the importance of the fator of the publishers was diminishing form year to year.
 ::::
 
@@ -283,7 +286,8 @@ publisher_year_global_sales %>%
        x = "year of release(from 1983 to 2016)", y = "mean global sales"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_blank()) +
+  theme(legend.justification = "bottom")
 
 ```
 ::::
@@ -314,6 +318,7 @@ sample_data %>%
 ```
 ::::
 :::
+
 
 ## The correlation between critic score and global sales: {data-background-image="img/gamecontr2.png"}
 - From the graph above, we can see that critic score affects global sales positively i.e, the higher the critic score, the more the global sales are.
