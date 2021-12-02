@@ -496,7 +496,9 @@ mean_df_long %>%
 North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and 'Other' regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.
 
 # Conclusion - Haoran:{data-background-image="img/gamecontr2.png"}
-We can see from the data where there is a lot of variables affecting the sale of games. For example region, year of release, publishers, platform, etc. But the most affecting on e is the region as there are different amount ofpeople in each region which mean even though the percentage of people buying game is same for all regions, due to different amount of people the amount of game sold is also different in each region, where then the region will be the factor that affect game sales most.
+-We can see from the data where there is a lot of variables affecting the sale of games. For example region, year of release, publishers, platform, etc. But the most affecting on e is the region as there are different amount ofpeople in each region which mean even though the percentage of people buying game is same for all regions, due to different amount of people the amount of game sold is also different in each region, where then the region will be the factor that affect game sales most.
+## Another Side:{data-background-image="img/gamecontr2.png"}
+-We can see that the critic score and user score did not have much influence on sale of games, this means that the buyers do not really care about the critic score when buying another way to say is that the critic score does not influence the wants of buying games and of course the user score comes after buying so it will not influence the sale much.
 
 
 # THE END:{data-background-image="img/surprise.png"}
