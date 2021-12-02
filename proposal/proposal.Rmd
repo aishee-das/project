@@ -143,7 +143,7 @@ From the plot, we can see that, overall, north america contributes the most to t
 
 ### Third Data
 
-#### A bar chart presenting the relationship between the pubisher and the mean global sales, which contains the ten most popular Publishers in world.. (x = Publisher, y = mean_JP_Sales).
+#### A bar chart presenting the mean global sales for the ten most popular publishers in the world (x = Publisher, y = mean_JP_Sales).
 
 #### code and plotting
 
@@ -164,7 +164,7 @@ global_sales_publisher_top10 %>%
   theme(axis.text.x = element_blank())
 
 ```
-From the bar chart, we can know that the publisher called palcom has the highrest 
+From the bar chart, we can know that the publisher called palcom had the highrest mean global sales,which is 4.17. However, other four publisher in the list of ten most popular publisher only had two times less mean global sales than that of palcom, which are Nintendo, RedOctane, Valve and Westwood Studios. This means the factor of Publisher can influnce a lot in the mean global sales.
 ### Fourth Data
 
 #### A comparison graph of critic score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
