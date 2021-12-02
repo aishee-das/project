@@ -43,6 +43,9 @@ Overall, genre certainly does have a big impact on the sales and success of a ga
 Here we have a bar graph showing the trend between publishers of games and number of games in the top 50 best selling list.
 From the top 50 best selling games, we can see Nintendo is by far the publisher with the most best selling games taking up almost half of the list. We can see from this that, very generally, the publisher does influence the success of games. Nintendo is so popular, most likely, because it makes such high quality, nostalgic games that are playable by a wide audience.
 
+###The relationship of regions and different platforms
+The graph is a plot of mean sales again platform and separate by regions. We can see that in all platform the mean sale of NA is the highest and having a very large difference to other regions.
+
 ## Presentation
 
 Our presentation can be found [here](presentation/presentation.html).

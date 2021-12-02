@@ -184,13 +184,118 @@ high_selling_games %>%
 # Data 7 - Karl
 
 
-# Data 4 - Aishee
+## Data 4 - Aishee
+
+# The correlation between critic score and global sales: {data-background-image="img/gamecontr2.png"} 
+::: columns
+:::: {.column width="30%"}
+A jitter graph showing the relationship between gcritic score and total global sales over the years.
+::::
+
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
+sample_data <- video_game_sales %>%
+ sample_n(500)
+
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales, col = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "blue") +
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+
+```
+::::
+:::
+
+## The correlation between critic score and global sales: {data-background-image="img/gamecontr2.png"}
+- From the graph above, we can see that critic score affects global sales positively i.e, the higher the critic score, the more the global sales are.
+- For this plot, I have taken a sample of 500 random observations. So this plot shows a different graph as it picks 500 random observations but in almost every single graph, we can se a positive trend.
+- We can also see critic scores which barely affect the global sales. For example, we can see critic score of above 60 which correlates to global sale of 0.
+
+## The correlation between critic score and global sales:{data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="50%"}
+Overall, critic score does not really have that much of an effect on the global sales of video games. Therefore we can conclude that critic score is most definitely, not one of the factors which will have the biggest influence on video games.
+::::
+
+:::: {.column width="50%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+sample_data <- video_game_sales %>%
+ sample_n(500)
+
+sample_data %>%
+  ggplot(aes(x = Critic_Score, y = Global_Sales, col = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "blue") +
+  labs(title = "How critic score relates to global sales",
+       x = "Critic Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+```
+::::
+:::
 
 
-# Data 5 - Aishee
+# The correlation between user score and global sales: {data-background-image="img/gamecontr2.png"} 
+::: columns
+:::: {.column width="30%"}
+A jitter plot showing the relationship between user score and total global sales over the years.
+::::
 
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
+sample_data1 <- video_game_sales %>%
+ sample_n(300)
 
-# The relationship of regions and different platforms
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
+
+sample_data1 %>%
+  ggplot(aes(x = User_Score, y = Global_Sales, color = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "darkgreen") +
+  labs(title = "How user score relates to global sales",
+       x = "User Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+
+```
+::::
+:::
+
+## The correlation between user score and global sales: {data-background-image="img/gamecontr2.png"}
+- From the graph above, we can see that user score does not really have an impact on global sales.
+- Here, I have taken a sample of 300 random observations from 16719 observations. So this plot shows a different graph as it picks 300 random observations we can sometimes see a positive trend, or not see a trend at all i.e the gradient is zero.
+- If we were to compare user score and critic score, user score would be the least influencing factor out of the two.
+
+## The correlation between user score and global sales:{data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="50%"}
+Overall, user score does not really have that much of an impact on the global sales of video games. Therefore we can conclude that user score is definitely not one of the factors which will have the biggest influence on video games.
+::::
+
+:::: {.column width="50%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+sample_data1 <- video_game_sales %>%
+ sample_n(300)
+
+sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
+
+sample_data1 %>%
+  ggplot(aes(x = User_Score, y = Global_Sales, color = "red")) +
+  geom_jitter()+
+  geom_smooth(method = "lm", se = FALSE, col = "darkgreen") +
+  labs(title = "How user score relates to global sales",
+       x = "User Score", y = "Global Sales"
+       ) +
+  theme_minimal() + theme(legend.position = "none")
+```
+::::
+:::
+
+# The relationship of regions and different platforms:{data-background-image="img/gamecontr2.png"}
 
 ```{r Mean-sale-vs-platform, echo = FALSE}
 mean_df <- video_game_sales %>%
@@ -218,7 +323,7 @@ mean_df_long %>%
   scale_fill_viridis_d()
 ```
 
-## Brief Explaination
+## Brief Explaination:{data-background-image="img/gamecontr2.png"}
 
 ::: columns
 :::: column
@@ -255,14 +360,15 @@ mean_df_long %>%
 ::::
 :::
 
-## Explaination
+## Explaination:{data-background-image="img/gamecontr2.png"}
 
 North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and 'Other' regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.
 
-# Conclusion - Haoran
+# Conclusion - Haoran:{data-background-image="img/gamecontr2.png"}
+We can see from the data where there is a lot of variables affecting the sale of games. For example region, year of release, publishers, platform, etc. But the most affecting on e is the region as there are different amount ofpeople in each region which mean even though the percentage of people buying game is same for all regions, due to different amount of people the amount of game sold is also different in each region, where then the region will be the factor that affect game sales most.
 
 
-# Extra if you need
+# THE END:{data-background-image="img/surprise.png"}
 
 <p style="font-size: 8pt; position: absolute; bottom: -5em; width: 100%; text-align: center;">*You can also add footnotes</p>
 

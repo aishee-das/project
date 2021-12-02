@@ -252,9 +252,15 @@ sample_data %>%
 
     ## `geom_smooth()` using formula 'y ~ x'
 
+<<<<<<< HEAD
+    ## Warning: Removed 247 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 247 rows containing missing values (geom_point).
+=======
     ## Warning: Removed 256 rows containing non-finite values (stat_smooth).
 
     ## Warning: Removed 256 rows containing missing values (geom_point).
+>>>>>>> d7fd93c4d5cf51e8b7aed9b58f5d200dc30ad850
 
 ![](proposal_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
@@ -292,8 +298,8 @@ sample_data1 <- video_game_sales %>%
 sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
 
 sample_data1 %>%
-  filter(User_Count > 175) %>%
-  ggplot(aes(as.numeric(User_Score), x = User_Score, y = User_Count , color = Global_Sales)) +
+  filter(User_Count > 200) %>%
+  ggplot(aes(x = User_Score, y = User_Count , color = Global_Sales)) +
   geom_jitter()+
   labs(title = "How user score relates to user count",
        x = "User Score", y = "User Count"
@@ -347,8 +353,11 @@ high_selling_games %>%
 
 ![](proposal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- --> We can see
 that Nintendo have the most game in top 50 high selling games, its about
-30+ and in total there is 5 publisher having game in the top 50. Where
-other publisher are all having games less than 10.
+20+ and in total there is 9 publishers having game in the top 50. Where
+other publisher are all having games less than 10. So we can see that
+the game published by Nintendo are having more sales, where Nintendo is
+such a large company which having a large amount of money so the game
+published from Nintendo do have a higher quality.
 
 ### Seventh data
 

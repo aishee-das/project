@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Disco   Adam, Aishee, Haoran, Karl" />
-  <meta name="dcterms.date" content="2021-11-30" />
+  <meta name="dcterms.date" content="2021-12-02" />
   <title>The factors affecting sales of video games</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,7 +137,7 @@
   <h1 class="subtitle"><font size='6'>From 1980 to 2020</font></h1>
   <h2 class="author"><font size='8'>Disco <br> Adam, Aishee, Haoran, Karl</font></h2>
   <h3 class="institute"><font size='10'>University of Edinburgh</font></h2>
-  <h3 class="date"><font size = '6'>2021-11-30</font></h3>
+  <h3 class="date"><font size = '6'>2021-12-02</font></h3>
 </section>
 
 <section id="a-statement-of-our-overall-goal" class="title-slide slide level1" data-background-image="img/gamecontr.png">
@@ -203,28 +203,83 @@
 
 </section>
 
+<section>
 <section id="data-7---karl" class="title-slide slide level1">
 <h1>Data 7 - Karl</h1>
 
 </section>
-
-<section id="data-4---aishee" class="title-slide slide level1">
-<h1>Data 4 - Aishee</h1>
-
-</section>
-
-<section id="data-5---aishee" class="title-slide slide level1">
-<h1>Data 5 - Aishee</h1>
-
-</section>
-
+<section id="data-4---aishee" class="slide level2">
+<h2>Data 4 - Aishee</h2>
+</section></section>
 <section>
-<section id="data-2---haoran" class="title-slide slide level1">
-<h1>Data 2 - Haoran</h1>
+<section id="the-correlation-between-critic-score-and-global-sales" class="title-slide slide level1" data-background-image="img/gamecontr2.png">
+<h1 data-background-image="img/gamecontr2.png">The correlation between critic score and global sales:</h1>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>A jitter graph showing the relationship between gcritic score and total global sales over the years.</p>
+</div><div class="column" style="width:70%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="80%" /></p>
+</div>
+</div>
+</section>
+<section id="the-correlation-between-critic-score-and-global-sales-1" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between critic score and global sales:</h2>
+<ul>
+<li>From the graph above, we can see that critic score affects global sales positively i.e, the higher the critic score, the more the global sales are.</li>
+<li>For this plot, I have taken a sample of 500 random observations. So this plot shows a different graph as it picks 500 random observations but in almost every single graph, we can se a positive trend.</li>
+<li>We can also see critic scores which barely affect the global sales. For example, we can see critic score of above 60 which correlates to global sale of 0.</li>
+</ul>
+</section>
+<section id="the-correlation-between-critic-score-and-global-sales-2" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between critic score and global sales:</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Overall, critic score does not really have that much of an effect on the global sales of video games. Therefore we can conclude that critic score is most definitely, not one of the factors which will have the biggest influence on video games.</p>
+</div><div class="column" style="width:50%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="100%" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="the-correlation-between-user-score-and-global-sales" class="title-slide slide level1" data-background-image="img/gamecontr2.png">
+<h1 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h1>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>A jitter plot showing the relationship between user score and total global sales over the years.</p>
+</div><div class="column" style="width:70%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="80%" /></p>
+</div>
+</div>
+</section>
+<section id="the-correlation-between-user-score-and-global-sales-1" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h2>
+<ul>
+<li>From the graph above, we can see that user score does not really have an impact on global sales.</li>
+<li>Here, I have taken a sample of 300 random observations from 16719 observations. So this plot shows a different graph as it picks 300 random observations we can sometimes see a positive trend, or not see a trend at all i.e the gradient is zero.</li>
+<li>If we were to compare user score and critic score, user score would be the least influencing factor out of the two.</li>
+</ul>
+</section>
+<section id="the-correlation-between-user-score-and-global-sales-2" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">The correlation between user score and global sales:</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Overall, user score does not really have that much of an impact on the global sales of video games. Therefore we can conclude that user score is definitely not one of the factors which will have the biggest influence on video games.</p>
+</div><div class="column" style="width:50%;">
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" width="100%" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="the-relationship-of-regions-and-different-platforms" class="title-slide slide level1" data-background-image="img/gamecontr2.png">
+<h1 data-background-image="img/gamecontr2.png">The relationship of regions and different platforms:</h1>
 <p><img src="presentation_files/figure-revealjs/mean-df-plot-1.png" width="80%" /></p>
 </section>
-<section id="brief-explaination" class="slide level2">
-<h2>Brief Explaination</h2>
+<section id="brief-explaination" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">Brief Explaination:</h2>
 <div class="columns">
 <div class="column">
 <ul>
@@ -236,33 +291,33 @@
 </div>
 </div>
 </section>
-<section id="explaination" class="slide level2">
-<h2>Explaination</h2>
+<section id="explaination" class="slide level2" data-background-image="img/gamecontr2.png">
+<h2 data-background-image="img/gamecontr2.png">Explaination:</h2>
 <p>North America is the biggest seller of video games across platforms. This will be due to a mix of large population and a high percentage of said population with access to these consoles. The opposite can be said about the lower end: Japan and ‘Other’ regions are on the lower end of mean sales for all platforms: they, in this context, have lower populations and lower percentage of said populations with access to these consoles and therefore it makes sense that they do not contribute as highly to the total global sales of video games across all platforms.</p>
 </section></section>
-<section id="conclusion---haoran" class="title-slide slide level1">
-<h1>Conclusion - Haoran</h1>
-
+<section id="conclusion---haoran" class="title-slide slide level1" data-background-image="img/gamecontr2.png">
+<h1 data-background-image="img/gamecontr2.png">Conclusion - Haoran:</h1>
+<p>We can see from the data where there is a lot of variables affecting the sale of games. For example region, year of release, publishers, platform, etc. But the most affecting on e is the region as there are different amount ofpeople in each region which mean even though the percentage of people buying game is same for all regions, due to different amount of people the amount of game sold is also different in each region, where then the region will be the factor that affect game sales most.</p>
 </section>
 
 <section>
-<section id="extra-if-you-need" class="title-slide slide level1">
-<h1>Extra if you need</h1>
+<section id="the-end" class="title-slide slide level1" data-background-image="img/surprise.png">
+<h1 data-background-image="img/surprise.png">THE END:</h1>
 <p style="font-size: 8pt; position: absolute; bottom: -5em; width: 100%; text-align: center;">
 *You can also add footnotes
 </p>
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a boring regression</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 5
 ##   term        estimate std.error statistic  p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ## 1 (Intercept)   -17.6      6.76      -2.60 1.23e- 2
 ## 2 speed           3.93     0.416      9.46 1.49e-12</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -282,7 +337,7 @@
 <li>goes here</li>
 </ul>
 </div><div class="column">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-9-1.png" width="100%" /></p>
 </div>
 </div>
 </section>
@@ -295,7 +350,7 @@
 <li>goes here</li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="100%" /></p>
+<p><img src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" width="100%" /></p>
 </div>
 </div>
 </section>

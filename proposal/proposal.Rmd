@@ -192,30 +192,32 @@ From the graph shown above, we can see that critic score affects global sales po
 
 ### Fifth data
 
-#### A scatter graph comparing the user count and user score alongside the same of comparing the critic count and critic score. Colour coded by global sales amount
-(???)
+#### A comparison graph of user score and global sales (x variable = critic score, y variable = global sales) and how they relate to each other using a line graph.
+
+This plot will show the relationship between user score and global sales. It will help visualize how user score affects global sales - if critic score has an effect on global sales either negatively or positively or does not have an effect at all.
 
 #### code and plotting
 
 ```{r }
 sample_data1 <- video_game_sales %>%
- sample_n(500)%>%
-  filter(!is.na(User_Score)) %>%
-  filter(!(User_Score == 'tbd'))
+ sample_n(300)
 
 sample_data1$User_Score <- as.numeric(as.character(sample_data1$User_Score))
 
 sample_data1 %>%
-  filter(User_Count > 200) %>%
-  ggplot(aes(x = User_Score, y = User_Count , color = Global_Sales)) +
+  ggplot(aes(x = User_Score, y = Global_Sales, color = "red")) +
   geom_jitter()+
-  labs(title = "How user score relates to user count",
-       x = "User Score", y = "User Count"
+  geom_smooth(method = "lm", se = FALSE, col = "darkgreen") +
+  labs(title = "How user score relates to global sales",
+       x = "User Score", y = "Global Sales"
        ) +
-  theme_minimal()
-
+  theme_minimal() + theme(legend.position = "none")
 
 ```
+
+### Analysis
+
+From the graph shown above, we can see that user score does not really have an impact on global sales. Here, I have taken a sample of 300 random observations from 16719 observations. This is because plotting a graph with 16719 observations did not seem to show a very clear trend. So this shows a different graph every time as it picks a random bunch of 300 observations. But in almost every single graph generated, we can sometimes see a positive trend, or not see a trend at all i.e the gradient is zero. Therefore we can conclude that user score is definitely not one of the factors which will have the biggest influence on video games. If we were to compare user score and critic score, user score would be the least influecing factor out of the two.
 
 ### Sixth Data
 
