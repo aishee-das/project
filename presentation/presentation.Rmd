@@ -178,11 +178,116 @@ high_selling_games %>%
 ```
 ::::
 :::
-# Data 3 - Karl
+# Data 3&7 - Karl
+# The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="30%"}
+A bar chart showing the mean global sales for the ten most popular publishers in the world.
+::::
+
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
+global_sales_publisher_top10 <- video_game_sales %>%
+  group_by(Publisher) %>%
+  summarise(mean_global_Sales = mean(Global_Sales)) %>%
+  arrange(desc(mean_global_Sales)) %>%
+  slice(1:10)
+  
+global_sales_publisher_top10 %>%
+  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "The ten most popular Publishers in world",
+       x = "Publisher", y = "mean global Sales"
+       ) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+```
+::::
+:::
 
 
-# Data 7 - Karl
+## The correlation between Publishers and sales: {data-background-image="img/gamecontr2.png"}
+-From the bar chart, we can know that the publisher called palcom had the highrest mean global sales,which is 4.17. 
+-However, other four publisher in the list of ten most popular publisher only had two times less mean global sales than that of palcom, which are Nintendo, RedOctane, Valve and Westwood Studios.
+## The correlation between Publishers and sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="35%"}
+overall, the factor of Publisher can influnce a lot in the mean global.
+::::
 
+:::: {.column width="65%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+global_sales_publisher_top10 %>%
+  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "The ten most popular Publishers in world",
+       x = "Publisher", y = "mean global Sales"
+       ) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+
+```
+::::
+:::
+
+# The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="30%"}
+A point graph showing the relationship between the year to release and the global sales for the Publishers with the highest mean global sales.
+::::
+
+
+:::: {.column width="70%"}
+```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
+publisher_year_global_sales <- video_game_sales %>%
+  group_by(Publisher, Year_of_Release)%>%
+  filter(!Year_of_Release == "N/A") %>%
+  summarise(Year_of_Release, Publisher, Global_mean_Sales = mean(Global_Sales)) %>%
+  group_by(Publisher) %>%
+  distinct() %>%
+  filter(Publisher %in% c("Nintendo", "Red Orb", "Arena Entertainment", 	
+"RedOctane", "Sony Computer Entertainment Europe"))
+  
+  
+  
+publisher_year_global_sales %>%
+  ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
+  geom_point() +
+  labs(title = "Global mean sales VS Year of release",
+       subtitle = "the Publishers with the highest mean global sales",
+       x = "year of release(from 1983 to 2016)", y = "mean global sales"
+       ) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+```
+::::
+:::
+
+
+## The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+-The five publishers in the point graph all came from the list of the ten most popular publishers in the world, which were also continuously publish new games from 1983 to 2016. 
+-we can observe that the mean global sales for all of them were decreased. This means that they are no longer monopoly the market of the video game, and the whole market was split into more and more pieces. More and more game companies were coming into this market to grab the maket share. 
+## The correlation between the year to release and the global sales for the Publishers with the highest mean global sales: {data-background-image="img/gamecontr2.png"}
+::: columns
+:::: {.column width="35%"}
+-Consequently, the importance of the fator of the publishers was diminishing form year to year.
+::::
+
+:::: {.column width="65%"}
+```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
+publisher_year_global_sales %>%
+  ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
+  geom_point() +
+  labs(title = "Global mean sales VS Year of release",
+       subtitle = "the Publishers with the highest mean global sales",
+       x = "year of release(from 1983 to 2016)", y = "mean global sales"
+       ) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+
+```
+::::
+:::
 
 ## Data 4 - Aishee
 
