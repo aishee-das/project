@@ -178,6 +178,7 @@ high_selling_games %>%
 ```
 ::::
 :::
+
 # The correlation between publisher and sales: {data-background-image="img/gamecontr2.png"}
 ::: columns
 :::: {.column width="30%"}
@@ -193,14 +194,23 @@ global_sales_publisher_top10 <- video_game_sales %>%
   slice(1:10)
   
 global_sales_publisher_top10 %>%
-  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  ggplot(aes(x = mean_global_Sales, y = Publisher, fill = Publisher)) + 
   geom_bar(stat = "identity") +
   labs(title = "The ten most popular Publishers in world",
-       x = "Publisher", y = "mean global Sales"
+       x = "mean global Sales", y = "Publisher"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 15, size = 10),
-        legend.position = "none")
+  theme(legend.position = "none") +
+   scale_y_discrete(labels=c("Palcom" = "Pal", 
+                             "Red Orb" = "RED O",
+                            "Nintendo" = "Nin",
+                            "	Arena Entertainment" = "AE",
+                            "UEP Systems" = "UEP S",
+                            "RedOctane" = "REDO",
+                            "Hello Games" = "HG",
+                            "Valve" = "Valve",
+                            "Sony Computer Entertainment Europe" = "SCEE",
+                            "Westwood Studios" = "WS"))
 ```
 ::::
 :::
@@ -209,6 +219,7 @@ global_sales_publisher_top10 %>%
 ## The correlation between Publishers and sales: {data-background-image="img/gamecontr2.png"}
 -From the bar chart, we can know that the publisher called palcom had the highrest mean global sales,which is 4.17. 
 -However, other four publisher in the list of ten most popular publisher only had two times less mean global sales than that of palcom, which are Nintendo, RedOctane, Valve and Westwood Studios.
+
 ## The correlation between Publishers and sales: {data-background-image="img/gamecontr2.png"}
 ::: columns
 :::: {.column width="35%"}
@@ -218,14 +229,23 @@ overall, the factor of Publisher can influnce a lot in the mean global.
 :::: {.column width="65%"}
 ```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
 global_sales_publisher_top10 %>%
-  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  ggplot(aes(x = mean_global_Sales, y = Publisher, fill = Publisher)) + 
   geom_bar(stat = "identity") +
   labs(title = "The ten most popular Publishers in world",
-       x = "Publisher", y = "mean global Sales"
+       x = "Publisher", y = "Publisher"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 15, size = 10),
-        legend.position = "none")
+  theme(legend.position = "none") +
+   scale_y_discrete(labels=c("Palcom" = "Pal", 
+                             "Red Orb" = "RED O",
+                            "Nintendo" = "Nin",
+                            "	Arena Entertainment" = "AE",
+                            "UEP Systems" = "UEP S",
+                            "RedOctane" = "REDO",
+                            "Hello Games" = "HG",
+                            "Valve" = "Valve",
+                            "Sony Computer Entertainment Europe" = "SCEE",
+                            "Westwood Studios" = "WS"))
   
 
 ```
@@ -238,7 +258,7 @@ global_sales_publisher_top10 %>%
 A point graph showing the relationship between the year to release and the global sales for the Publishers with the highest mean global sales.
 ::::
 
-:::: {.column width="40%"}
+:::: {.column width="70%"}
 ```{r warning=FALSE, out.width="80%", fig.width=4, echo=FALSE}
 publisher_year_global_sales <- video_game_sales %>%
   group_by(Publisher, Year_of_Release)%>%
@@ -255,7 +275,6 @@ publisher_year_global_sales %>%
   ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
   geom_point() +
   labs(title = "Global mean sales VS Year of release",
-       subtitle = "the Publishers with the highest mean global sales",
        x = "year of release(from 1983 to 2016)", y = "mean global sales"
        ) +
   theme_minimal() +
@@ -282,7 +301,6 @@ publisher_year_global_sales %>%
   ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
   geom_point() +
   labs(title = "Global mean sales VS Year of release",
-       subtitle = "the Publishers with the highest mean global sales",
        x = "year of release(from 1983 to 2016)", y = "mean global sales"
        ) +
   theme_minimal() +

@@ -155,13 +155,28 @@ global_sales_publisher_top10 <- video_game_sales %>%
   slice(1:10)
   
 global_sales_publisher_top10 %>%
-  ggplot(aes(x = Publisher, y = mean_global_Sales, fill = Publisher)) + 
+  ggplot(aes(x = mean_global_Sales, y = Publisher, fill = Publisher)) + 
   geom_bar(stat = "identity") +
   labs(title = "The ten most popular Publishers in world",
-       x = "Publisher", y = "mean global Sales"
+       x = "mean global Sales", y = "Publisher"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(legend.position = "none") +
+   scale_y_discrete(labels=c("Palcom" = "Pal", 
+                             "Red Orb" = "RED O",
+                            "Nintendo" = "Nin",
+                            "	Arena Entertainment" = "AE",
+                            "UEP Systems" = "UEP S",
+                            "RedOctane" = "REDO",
+                            "Hello Games" = "HG",
+                            "Valve" = "Valve",
+                            "Sony Computer Entertainment Europe" = "SCEE",
+                            "Westwood Studios" = "WS"))
+                            
+                            
+ 
+  
+  
 
 ```
 From the bar chart, we can know that the publisher called palcom had the highrest mean global sales,which is 4.17. However, other four publisher in the list of ten most popular publisher only had two times less mean global sales than that of palcom, which are Nintendo, RedOctane, Valve and Westwood Studios. This means the factor of Publisher can influnce a lot in the mean global sales.
@@ -265,11 +280,11 @@ publisher_year_global_sales %>%
   ggplot(aes(x = Year_of_Release, y = Global_mean_Sales, colour = Publisher)) +
   geom_point() +
   labs(title = "Global mean sales VS Year of release",
-       subtitle = "the Publishers with the highest mean global sales",
        x = "year of release(from 1983 to 2016)", y = "mean global sales"
        ) +
   theme_minimal() +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_blank()) +
+  theme(legend.justification = "bottom")
   
 ```
 The five publishers in the point graph all came from the list of the ten most popular publishers in the world, which were also continuously publish new games from 1983 to 2016. we can observe that the mean global sales for all of them were decreased. This means that they are no longer monopoly the market of the video game, and the whole market was split into more and more pieces. More and more game companies were coming into this market to grab the maket share. Consequently, the importance of the fator of the publishers was diminishing form year to year. Thus, the factor of publishers never be the one that influences the global sales most.
