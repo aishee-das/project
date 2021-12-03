@@ -314,8 +314,6 @@ publisher_year_global_sales %>%
 ::::
 :::
 
-# Data 4 - Aishee
-
 # The correlation between critic score and global sales: {data-background-image="img/gamecontr2.png"} 
 ::: columns
 :::: {.column width="30%"}

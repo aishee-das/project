@@ -46,6 +46,15 @@ From the top 50 best selling games, we can see Nintendo is by far the publisher 
 ###The relationship of regions and different platforms
 The graph is a plot of mean sales again platform and separate by regions. We can see that in all platform the mean sale of NA is the highest and having a very large difference to other regions.
 
+
+### Critic score vs global sales.
+
+Here we have a jitter graph showing the trend between critic score and global sales over the years. As we can see, the higher the critic scores the more the global sales are. Here I have just taken a sample of 500 observations from over 10000 of them we originally had in the data set. This is because using all 10000 observations cluttered the graph and didnot diaplay a very clear trend line. In this graph, we can also see a lot of critic scores which barely affected the global sales which shows as much as critic score had a positive impact on global sales, it isn't enough to state critic score as a factor which will have the biggest influence on video games.  
+
+### User score vs global sales.
+
+Her we have a similar graph like before to show the trend between user score and global sales. Again here I have just used a sample of 300 0nservations as it was easier to work with. Unlike critic score, we dont really see a trend here. Sometimes (i.e with every random graoh generated from the 300 observations) we can see it is a positive trend or not a trend at all. So therefore we can say that user score wont be a factor which will have a big influence on video games. And if we were to compare user score to critic score, I would say critic score has a bigger influence on video games than user score.
+
 ## Presentation
 
 Our presentation can be found [here](presentation/presentation.html).
