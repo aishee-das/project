@@ -1,7 +1,6 @@
 ---
 title: "The factors affecting sales of video games"
 subtitle: <font size='6'>From 1980 to 2020</font>
-author: <font size='8'>Disco <br> Adam, Aishee, Haoran, Karl</font>
 institute: <font size='10'>University of Edinburgh</font>
 date: <font size = '6'>`r Sys.Date()`</font>
 output:
