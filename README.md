@@ -1,9 +1,9 @@
-WHICH FACTOR HAS THE BIGGEST INFLUENCE OF SALES ON VIDEO GAMES?
+Which factor has the biggest influence on sales of video games?
 ================
 
 ## Presentation
 
-Our presentation can be found [here](presentation/presentation.html).
+Our presentation can be found [here]([presentation/presentation.html](https://rpubs.com/aisheedas2003/876371)).
 
 ## Data
 
